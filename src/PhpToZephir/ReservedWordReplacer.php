@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright (c) 2017.
+ *
+ *
+ */
 
 namespace PhpToZephir;
 
@@ -40,7 +45,8 @@ class ReservedWordReplacer
             'float' => 'floatt',
             'int' => 'intt',
             'internal' => 'internall',
-            'deprecated' => 'deprecatedd'
+            'deprecated' => 'deprecatedd',
+            'fetch' => '$fetch'
         );
 
         foreach ($reservedWord as $word => $replacement) {
