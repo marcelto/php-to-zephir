@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright (c) 2017.
+ *
+ *
+ */
 
 namespace PhpToZephir;
 
@@ -14,7 +19,7 @@ class EngineFactory
     public static function getInstance()
     {
         return new Engine(
-            new Parser(new Emulative()),
+            new Parser\Php7(new Emulative()),
             ConverterFactory::getInstance(),
             ClassCollectorFactory::getInstance()
         );

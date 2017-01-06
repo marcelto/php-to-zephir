@@ -15,10 +15,10 @@
 	],
 	"homepage" : "https://github.com/fezfez/php-to-zephir",
 	"require" : {
-		"nikic/PHP-Parser" : "1.4.*",
-		"phpdocumentor/reflection-docblock" : "2.0.*",
-		"phalcon/zephir" : "0.8.*",
-		"symfony/console" : "2.7.*"
+		"nikic/PHP-Parser" : "3.0.*",
+		"phpdocumentor/reflection-docblock" : "3.1.*",
+		"phalcon/zephir" : "0.9.*",
+		"symfony/console" : "3.1.*"
 	},
 	"require-dev" : {
 		"phpunit/phpunit" : "4.8.*"

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright (c) 2017.
+ *
+ *
+ */
 
 namespace PhpToZephir\Converter\Printer\Expr;
 
@@ -249,7 +254,7 @@ class AssignPrinter
 
         list($precedence, $associativity) = $this->dispatcher->getPrecedenceMap($type);
 
-        foreach ($node->var->vars as $count => $var) {
+        foreach ($node->var->items as $count => $var) {
             if (null === $var) {
                 $pList[] = '';
             } else {
@@ -261,7 +266,7 @@ class AssignPrinter
 
         $pList[] = 'let ' . $listVarName . ' = ' . $this->dispatcher->pPrec($rightNode, $precedence, $associativity, 1) . '';
         
-        foreach ($node->var->vars as $count => $var) {
+        foreach ($node->var->items as $count => $var) {
             if (null === $var) {
                 $pList[] = '';
             } else {

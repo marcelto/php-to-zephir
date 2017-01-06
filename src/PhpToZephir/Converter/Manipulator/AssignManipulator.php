@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright (c) 2017.
+ *
+ *
+ */
 
 namespace PhpToZephir\Converter\Manipulator;
 
@@ -96,7 +101,7 @@ class AssignManipulator
         if ($primaryNode instanceof Expr\Assign) {
             if ($primaryNode->var instanceof Expr\List_) {
                 $varName = '';
-                foreach ($primaryNode->var->vars as $listVar) {
+                foreach ($primaryNode->var->items as $listVar) {
                     $varName .= ucfirst($listVar->name);
                 }
                 $primaryNode = new Expr\Variable("tmpList" . $varName);

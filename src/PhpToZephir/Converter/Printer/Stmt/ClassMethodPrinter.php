@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright (c) 2017.
+ *
+ *
+ */
 
 namespace PhpToZephir\Converter\Printer\Stmt;
 
@@ -208,7 +213,7 @@ class ClassMethodPrinter
                     }
                 } elseif (($stmt['node']->var instanceof Expr\List_) === true) {
                     $varInList = array();
-                    foreach ($stmt['node']->var->vars as $var) {
+                    foreach ($stmt['node']->var->items as $var) {
                         if (null !== $var) { 
                             $varInList[] = ucfirst($this->dispatcher->p($var));
                             if (($var instanceof Expr\ArrayDimFetch) === false) {
