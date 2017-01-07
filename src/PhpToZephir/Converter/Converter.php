@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright (c) 2017.
+ *
+ *
+ */
 
 namespace PhpToZephir\Converter;
 
@@ -98,6 +103,7 @@ class Converter
      */
     private function findAdditionalClasses(array $stmts, Logger $logger)
     {
+        return [];
         $closurePrinter = new ClosurePrinter($this->dispatcher, $logger);
         $lastMethod = null;
         $aditionalClass = array();

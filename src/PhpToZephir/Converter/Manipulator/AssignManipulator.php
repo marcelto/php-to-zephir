@@ -111,8 +111,9 @@ class AssignManipulator
         } elseif ($this->isVarModification($primaryNode)) {
             $primaryNode = $primaryNode->var;
         } elseif ($this->isVarCreation($primaryNode) && !in_array("PhpParser\Node\Expr\ArrayItem", $parentClass) ) {
-            $primaryNode = new Expr\Variable('tmpArray'.md5(serialize($primaryNode->items)));
-        } else {
+            $primaryNode = new Expr\Variable('tmpArray' . md5(serialize($primaryNode->items)));
+        } elseif (!($primaryNode instanceof Expr\Closure)) {
+            // if $primaryNode is an instance of  Expr/Closure, the transformassign is done inside the Closure!
             if (is_array($primaryNode) === true) {
                 foreach ($primaryNode as $key => $node) {
                     $primaryNode[$key] = $this->transformAssignInConditionTest($node);
