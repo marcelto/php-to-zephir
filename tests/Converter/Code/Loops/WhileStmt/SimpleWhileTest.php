@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Loops\WhileStmt;
 
 class SimpleWhileTest extends \ConverterBaseTest

@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Condition\IfStmt;
 
 class IfWithAssignementArrayDimInConditionTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class IfWithAssignementArrayDimInConditionTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Condition\IfStmt;
 
 class IfWithAssignementArrayDimInCondition

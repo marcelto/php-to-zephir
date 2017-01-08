@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -26,9 +25,9 @@ class YieldPrinter extends SimplePrinter
         } else {
             // this is a bit ugly, but currently there is no way to detect whether the parentheses are necessary
             return '(yield '
-                 .($node->key !== null ? $this->dispatcher->p($node->key).' => ' : '')
-                 .$this->dispatcher->p($node->value)
-                 .')';
+                . ($node->key !== null ? $this->dispatcher->p($node->key) . ' => ' : '')
+                . $this->dispatcher->p($node->value)
+                . ')';
         }
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\StrongType\FunctionStmt;
 
 class MethodTypeWithObjectTypeTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class MethodTypeWithObjectTypeTest extends \ConverterBaseTest
     {
         $php = array(<<<'EOT'
 <?php
-
 namespace Code\StrongType\FunctionStmt;
 
 use Code\StrongType\MyParametterTwo;
@@ -23,7 +21,6 @@ EOT
 ,
         <<<'EOT'
 <?php
-
 namespace Code\StrongType\FunctionStmt;
 
 class MyParametter
@@ -33,7 +30,6 @@ EOT
 ,
 <<<'EOT'
 <?php
-
 namespace Code\StrongType;
 
 class MyParametterTwo
@@ -91,7 +87,6 @@ class MyClass implements MyInterface
 EOT
     			,<<<'EOT'
 <?php
-
 namespace Code\StrongType\FunctionStmt;
 
 use Code\StrongType\MyParametterTwo;
@@ -114,7 +109,6 @@ EOT
     			,
     			<<<'EOT'
 <?php
-
 namespace Code\StrongType;
 
 class MyParametterTwo

@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\ArrayManipulation;
 
 class Bug1Test extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class Bug1Test extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\ArrayManipulation;
 
 class Bug1

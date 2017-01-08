@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Tests\EngineFactory;
 
 use PhpToZephir\EngineFactory;

@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Oop;
 
 class UnkownInterfaceTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class UnkownInterfaceTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Oop;
 
 class MyClass implements UnkownInterface

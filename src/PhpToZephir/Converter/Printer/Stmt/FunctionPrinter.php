@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -22,9 +21,9 @@ class FunctionPrinter extends SimplePrinter
                 $this->dispatcher->getMetadata()->getClass()
             );
         }
-        
-        return 'function '.$node->name
-             .'('.$this->dispatcher->pCommaSeparated($node->params).')'
-             ."\n".'{'.$this->dispatcher->pStmts($node->stmts)."\n".'}';
+
+        return 'function ' . $node->name
+            . '(' . $this->dispatcher->pCommaSeparated($node->params) . ')'
+            . "\n" . '{' . $this->dispatcher->pStmts($node->stmts) . "\n" . '}';
     }
 }

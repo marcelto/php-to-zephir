@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -22,6 +21,6 @@ class StaticPropertyFetchPrinter extends SimplePrinter
      */
     public function convert(Expr\StaticPropertyFetch $node)
     {
-        return $this->dispatcher->p($node->class).'::'.$this->dispatcher->pObjectProperty($node->name);
+        return $this->dispatcher->p($node->class) . '::' . $this->dispatcher->pObjectProperty($node->name);
     }
 }

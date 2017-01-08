@@ -1,10 +1,9 @@
 <?php
-
 namespace PhpToZephir;
 
 class FileWriter
 {
-    const BASE_DESTINATION = 'converted/';
+    const BASE_DESTINATION = 'zephir/php2zephir/';
 
     /**
      * Config template
@@ -51,7 +50,7 @@ class FileWriter
     "verbose": true
 }
 ';
-    
+
     /**
      * @param array $file
      */
@@ -70,7 +69,7 @@ class FileWriter
             $file['zephir']
         );
     }
-    
+
     /**
      * Create config file for zephir
      *

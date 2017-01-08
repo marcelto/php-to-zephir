@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpToZephir\Converter\Dispatcher;
@@ -55,7 +54,7 @@ class IfPrinter
         $node->cond = $this->assignManipulator->transformAssignInConditionTest($node->cond);
 
         if (empty($node->stmts)) {
-            $node->stmts = array(new Stmt\Echo_(array(new Scalar\String_('not allowed'))));
+            $node->stmts = [new Stmt\Echo_([new Scalar\String_('not allowed')])];
             $this->logger->logIncompatibility(
                 'Empty if',
                 'Empty if not allowed, add "echo not allowed"',
@@ -65,9 +64,9 @@ class IfPrinter
         }
 
         return $collected->getCollected() .
-               'if '.$this->dispatcher->p($node->cond).' {'
-             .$this->dispatcher->pStmts($node->stmts)."\n".'}'
-             .$this->implodeElseIfs($node);
+            'if ' . $this->dispatcher->p($node->cond) . ' {'
+            . $this->dispatcher->pStmts($node->stmts) . "\n" . '}'
+            . $this->implodeElseIfs($node);
     }
 
     /**
@@ -83,13 +82,14 @@ class IfPrinter
             $collected = $this->assignManipulator->collectAssignInCondition($elseIf->cond);
             if ($collected->hasCollected()) {
                 ++$elseCount;
-                $toReturn .= ' else {'."\n".$this->dispatcher->p(new Stmt\If_($elseIf->cond, array('stmts' => $elseIf->stmts)))."\n";
+                $toReturn .= ' else {' . "\n" . $this->dispatcher->p(new Stmt\If_($elseIf->cond,
+                        ['stmts' => $elseIf->stmts])) . "\n";
             } else {
                 $toReturn .= $this->dispatcher->pStmt_ElseIf($elseIf);
             }
         }
         $toReturn .= (null !== $node->else ? $this->dispatcher->p($node->else) : '');
 
-        return $toReturn.str_repeat('}', $elseCount);
+        return $toReturn . str_repeat('}', $elseCount);
     }
 }

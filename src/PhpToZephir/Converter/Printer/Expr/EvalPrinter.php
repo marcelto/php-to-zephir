@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -14,6 +13,6 @@ class EvalPrinter extends SimplePrinter
 
     public function convert(Expr\Eval_ $node)
     {
-        return 'eval('.$this->dispatcher->p($node->expr).')';
+        return 'eval(' . $this->dispatcher->p($node->expr) . ')';
     }
 }

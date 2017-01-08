@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Simple;
 
 class AnonymeFunctionStmtTest extends \ConverterBaseTest
@@ -29,8 +28,8 @@ class AnonymeFunctionStmt
 
 EOT;
         $zephir = array(
-<<<'EOT'
-namespace Code\Simple;
+            <<<'EOT'
+            namespace Code\Simple;
 
 class AnonymeFunctionStmt
 {
@@ -49,9 +48,9 @@ class AnonymeFunctionStmt
 
 }
 EOT
-,
-<<<'EOT'
-namespace Code\Simple;
+        ,
+            <<<'EOT'
+            namespace Code\Simple;
 
 class AnonymeFunctionStmttestClosureZero
 {
@@ -70,7 +69,7 @@ class AnonymeFunctionStmttestClosureZero
 }
     
 EOT
-);
+        );
         $this->assertConvertToZephir($php, $zephir);
     }
 }

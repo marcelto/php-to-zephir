@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpToZephir\Converter\Dispatcher;
@@ -57,13 +56,15 @@ class TernaryPrinter
         $node->cond = $this->assignManipulator->transformAssignInConditionTest($node->cond);
 
         $collected->setExpr($this->dispatcher->pInfixOp('Expr_Ternary',
-            $node->cond, ' ?'.(null !== $node->if ? ' '.$this->dispatcher->p($node->if).' ' : ' ' . $this->dispatcher->p($node->cond)).' : ', $node->else
+            $node->cond,
+            ' ?' . (null !== $node->if ? ' ' . $this->dispatcher->p($node->if) . ' ' : ' ' . $this->dispatcher->p($node->cond)) . ' : ',
+            $node->else
         ));
 
         if ($returnAsArray === true) {
             return $collected;
         } else {
-            return $collected->getCollected()." ".$collected->getExpr();
+            return $collected->getCollected() . " " . $collected->getExpr();
         }
     }
 }

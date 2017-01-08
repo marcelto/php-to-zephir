@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;

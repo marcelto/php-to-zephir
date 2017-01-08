@@ -1,10 +1,4 @@
 <?php
-/**
- * Copyright (c) 2017.
- *
- *
- */
-
 namespace PhpToZephir\Converter;
 
 use PhpToZephir\Logger;
@@ -44,22 +38,27 @@ class Converter
      *
      * @return array
      */
-    public function nodeToZephir(array $stmts, ClassCollector $classCollector, Logger $logger, $fileName = null, array $classCollected = array())
-    {
+    public function nodeToZephir(
+        array $stmts,
+        ClassCollector $classCollector,
+        Logger $logger,
+        $fileName = null,
+        array $classCollected = []
+    ) {
         $classInformation = ClassInformationFactory::getInstance();
         $metadata = $classInformation->getClassesMetdata($stmts);
 
         $this->implementsExist($metadata, $classCollector);
 
-        return array(
-            'code' => $this->dispatcher->convert($stmts, $metadata, $classCollector, $logger),
-            'namespace' => $metadata->getNamespace(),
+        return [
+            'code'            => $this->dispatcher->convert($stmts, $metadata, $classCollector, $logger),
+            'namespace'       => $metadata->getNamespace(),
             'additionalClass' => $this->findAdditionalClasses($stmts, $logger),
-        );
+        ];
     }
 
     /**
-     * @param ClassMetadata $metadata
+     * @param ClassMetadata  $metadata
      * @param ClassCollector $classCollector
      */
     private function implementsExist(ClassMetadata $metadata, ClassCollector $classCollector)
@@ -70,9 +69,10 @@ class Converter
     }
 
     /**
-     * @param ClassMetadata $metadata
+     * @param ClassMetadata  $metadata
      * @param ClassCollector $classCollector
-     * @param string $implements
+     * @param string         $implements
+     *
      * @throws \Exception
      * @return boolean
      */
@@ -106,7 +106,7 @@ class Converter
         return [];
         $closurePrinter = new ClosurePrinter($this->dispatcher, $logger);
         $lastMethod = null;
-        $aditionalClass = array();
+        $aditionalClass = [];
         $number = 0;
 
         foreach ($this->nodeFetcher->foreachNodes($stmts) as $nodeData) {

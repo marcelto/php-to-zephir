@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer;
 
 use PhpParser\Node;
@@ -31,6 +30,6 @@ class ConstPrinter extends SimplePrinter
             $node->value = new Node\Scalar\String_('');
         }
 
-        return $node->name.' = '.$this->dispatcher->p($node->value);
+        return $node->name . ' = ' . $this->dispatcher->p($node->value);
     }
 }

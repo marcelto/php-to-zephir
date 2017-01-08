@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -22,7 +21,7 @@ class ElseIfPrinter extends SimplePrinter
      */
     public function convert(Stmt\ElseIf_ $node)
     {
-        return ' elseif '.$this->dispatcher->p($node->cond).' {'
-             .$this->dispatcher->pStmts($node->stmts)."\n".'}';
+        return ' elseif ' . $this->dispatcher->p($node->cond) . ' {'
+            . $this->dispatcher->pStmts($node->stmts) . "\n" . '}';
     }
 }

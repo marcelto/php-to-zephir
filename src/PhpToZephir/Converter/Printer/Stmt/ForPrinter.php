@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -31,33 +30,34 @@ class ForPrinter extends SimplePrinter
         }
 
         if (count($node->cond) === 0) {
-            return (!empty($node->init) ? $this->dispatcher->pStmts($node->init)."\n" : '')
-               .'loop'
-              ." {\n".$this->dispatcher->pStmts($node->stmts)."\n".$this->dispatcher->pStmts($node->loop)."\n".'}';
+            return (!empty($node->init) ? $this->dispatcher->pStmts($node->init) . "\n" : '')
+                . 'loop'
+                . " {\n" . $this->dispatcher->pStmts($node->stmts) . "\n" . $this->dispatcher->pStmts($node->loop) . "\n" . '}';
         } elseif ($node->cond[0] instanceof BinaryOp) {
             $node = $this->findIteratorVar($node);
 
             return $this->printVars($node) . 'for '
-                 .$this->dispatcher->p($node->init[0]->var).' in '.(!empty($node->cond) ? '' : '')
-                 .'range('.$this->dispatcher->p($node->cond[0]->left).', '.$this->dispatcher->p($node->cond[0]->right).')'
-                 .' {'.$this->dispatcher->pStmts($node->stmts)."\n".'}';
+                . $this->dispatcher->p($node->init[0]->var) . ' in ' . (!empty($node->cond) ? '' : '')
+                . 'range(' . $this->dispatcher->p($node->cond[0]->left) . ', ' . $this->dispatcher->p($node->cond[0]->right) . ')'
+                . ' {' . $this->dispatcher->pStmts($node->stmts) . "\n" . '}';
         } elseif (count($node->cond) === 1 && $node->cond[0] instanceof Node\Expr) {
-            $ifNode = new Stmt\If_($node->cond[0], array('stmts' => array(new Node\Stmt\Break_())));
-            return (!empty($node->init) ? $this->dispatcher->pStmts($node->init)."\n" : '')
-            .'loop'
-                    ." {\n".$this->dispatcher->p($ifNode)."\n".$this->dispatcher->pStmts($node->stmts)."\n".$this->dispatcher->pStmts($node->loop)."\n".'}';
+            $ifNode = new Stmt\If_($node->cond[0], ['stmts' => [new Node\Stmt\Break_()]]);
+
+            return (!empty($node->init) ? $this->dispatcher->pStmts($node->init) . "\n" : '')
+                . 'loop'
+                . " {\n" . $this->dispatcher->p($ifNode) . "\n" . $this->dispatcher->pStmts($node->stmts) . "\n" . $this->dispatcher->pStmts($node->loop) . "\n" . '}';
         } else {
             throw new \Exception(sprintf('Cannot convert %s ', $this->dispatcher->pCommaSeparated($node->cond)));
         }
     }
-    
+
     private function printVars(Stmt\For_ $node)
     {
         $initPrint = '';
         foreach ($node->init as $init) {
             $initPrint .= $this->dispatcher->p($init) . ";\n";
         }
-        
+
         return $initPrint;
     }
 
@@ -76,7 +76,7 @@ class ForPrinter extends SimplePrinter
         } elseif ($node->cond[0]->right instanceof Variable && $node->cond[0]->right->name === $varName->name) {
             $node->cond[0]->right = $varValue;
         }
-        
+
         if ($node->cond[0] instanceof BinaryOp\Smaller && $node->cond[0]->right instanceof Scalar\LNumber) {
             --$node->cond[0]->right->value;
         }

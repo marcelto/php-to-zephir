@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Condition;
 
 class TernaryOperatorTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class TernaryOperatorTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Condition;
 
 class TernaryOperator

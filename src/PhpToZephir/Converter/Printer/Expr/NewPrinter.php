@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -15,9 +14,9 @@ class NewPrinter extends SimplePrinter
     public function convert(Expr\New_ $node)
     {
         if ($node->class instanceof \PhpParser\Node\Expr\Variable) {
-            return 'new {'.$this->dispatcher->p($node->class).'}('.$this->dispatcher->pCommaSeparated($node->args).')';
+            return 'new {' . $this->dispatcher->p($node->class) . '}(' . $this->dispatcher->pCommaSeparated($node->args) . ')';
         }
 
-        return 'new '.$this->dispatcher->p($node->class).'('.$this->dispatcher->pCommaSeparated($node->args).')';
+        return 'new ' . $this->dispatcher->p($node->class) . '(' . $this->dispatcher->pCommaSeparated($node->args) . ')';
     }
 }

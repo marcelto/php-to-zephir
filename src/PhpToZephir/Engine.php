@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir;
 
 use PhpParser\Parser;
@@ -46,12 +45,12 @@ class Engine
      */
     public function convert(CodeCollectorInterface $codeCollector, Logger $logger, $filterFileName = null)
     {
-        $zephirCode = array();
-        $classes = array();
+        $zephirCode = [];
+        $classes = [];
 
         $files = $codeCollector->getCode();
         $count = count($files);
-        $codes = array();
+        $codes = [];
 
         $logger->log('Collect class names');
         $progress = $logger->progress($count);
@@ -63,7 +62,7 @@ class Engine
             } catch (\Exception $e) {
                 $logger->log(
                     sprintf(
-                        '<error>Could not convert file'."\n".'"%s"'."\n".'cause : %s %s %s</error>'."\n",
+                        '<error>Could not convert file' . "\n" . '"%s"' . "\n" . 'cause : %s %s %s</error>' . "\n",
                         $fileName,
                         $e->getMessage(),
                         $e->getFile(),
@@ -94,7 +93,7 @@ class Engine
             } catch (\Exception $e) {
                 $logger->log(
                     sprintf(
-                        'Could not convert file "%s" cause : %s %s %s'."\n",
+                        'Could not convert file "%s" cause : %s %s %s' . "\n",
                         $phpFile,
                         $e->getMessage(),
                         $e->getFile(),
@@ -107,23 +106,24 @@ class Engine
 
             $zephirCode[$phpFile] = array_merge(
                 $converted,
-                array(
-                    'phpPath' => substr($phpFile, 0, strrpos($phpFile, '/')),
-                    'fileName' => $fileName,
-                    'fileDestination' => $converted['class'].'.zep',
-                )
-             );
+                [
+                    'phpPath'         => substr($phpFile, 0, strrpos($phpFile, '/')),
+                    'fileName'        => $fileName,
+                    'fileDestination' => $converted['class'] . '.zep',
+                ]
+            );
 
             $zephirCode[$phpFile]['fileDestination'] = str_replace('\\', '/', $zephirCode[$phpFile]['fileDestination']);
 
             foreach ($converted['additionalClass'] as $aditionalClass) {
-                $zephirCode[$phpFile.$aditionalClass['name']] = array_merge(
-                    array(
-                        'fileName' => $aditionalClass['name'],
-                        'zephir' => $aditionalClass['code'],
-                        'fileDestination' => str_replace('\\', '/', $converted['namespace']).'/'.$aditionalClass['name'].'.zep',
-                        'destination' => str_replace('\\', '/', $converted['namespace']).'/',
-                    )
+                $zephirCode[$phpFile . $aditionalClass['name']] = array_merge(
+                    [
+                        'fileName'        => $aditionalClass['name'],
+                        'zephir'          => $aditionalClass['code'],
+                        'fileDestination' => str_replace('\\', '/',
+                                $converted['namespace']) . '/' . $aditionalClass['name'] . '.zep',
+                        'destination'     => str_replace('\\', '/', $converted['namespace']) . '/',
+                    ]
                 );
             }
 
@@ -141,16 +141,21 @@ class Engine
      *
      * @return string
      */
-    private function convertCode($phpCode, ClassCollector $classCollector, Logger $logger, $fileName = null, array $classes = array())
-    {
+    private function convertCode(
+        $phpCode,
+        ClassCollector $classCollector,
+        Logger $logger,
+        $fileName = null,
+        array $classes = []
+    ) {
         $converted = $this->converter->nodeToZephir($phpCode, $classCollector, $logger, $fileName, $classes);
 
-        return array(
-            'zephir' => $converted['code'],
-            'php' => $phpCode,
-            'namespace' => $converted['namespace'],
-            'destination' => str_replace('\\', '/', $converted['namespace']).'/',
+        return [
+            'zephir'          => $converted['code'],
+            'php'             => $phpCode,
+            'namespace'       => $converted['namespace'],
+            'destination'     => str_replace('\\', '/', $converted['namespace']) . '/',
             'additionalClass' => $converted['additionalClass'],
-        );
+        ];
     }
 }

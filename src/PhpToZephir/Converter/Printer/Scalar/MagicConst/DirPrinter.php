@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Scalar\MagicConst;
 
 use PhpParser\Node\Scalar\MagicConst;

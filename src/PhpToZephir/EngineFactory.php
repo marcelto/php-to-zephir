@@ -1,10 +1,4 @@
 <?php
-/**
- * Copyright (c) 2017.
- *
- *
- */
-
 namespace PhpToZephir;
 
 use PhpParser\Parser;

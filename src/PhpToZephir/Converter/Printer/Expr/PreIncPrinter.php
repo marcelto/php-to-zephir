@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -22,6 +21,6 @@ class PreIncPrinter extends SimplePrinter
      */
     public function convert(Expr\PreInc $node)
     {
-        return 'let '.$this->dispatcher->pPostfixOp('Expr_PostInc', $node->var, '++');
+        return 'let ' . $this->dispatcher->pPostfixOp('Expr_PostInc', $node->var, '++');
     }
 }

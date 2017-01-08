@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpToZephir\Converter\Dispatcher;
@@ -44,7 +43,7 @@ class DoPrinter
         $collected = $this->assignManipulator->collectAssignInCondition($condition->cond);
         $node->cond = $this->assignManipulator->transformAssignInConditionTest($node->cond);
 
-        return 'do {'.$this->dispatcher->pStmts($node->stmts).$collected->getCollected()."\n"
-             .'} while ('.$this->dispatcher->p($node->cond).');';
+        return 'do {' . $this->dispatcher->pStmts($node->stmts) . $collected->getCollected() . "\n"
+            . '} while (' . $this->dispatcher->p($node->cond) . ');';
     }
 }

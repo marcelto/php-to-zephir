@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Tests\Render\FileRender;
 
 use PhpToZephir\Render\FileRender;

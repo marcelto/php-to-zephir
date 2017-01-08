@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node;
@@ -35,8 +34,8 @@ class SwitchPrinter extends SimplePrinter
         if ($transformToIf === true) {
             return $this->convertSwitchToIfelse($node);
         } else {
-            return 'switch ('.$this->dispatcher->p($node->cond).') {'
-             .$this->dispatcher->pStmts($node->cases)."\n".'}';
+            return 'switch (' . $this->dispatcher->p($node->cond) . ') {'
+                . $this->dispatcher->pStmts($node->cases) . "\n" . '}';
         }
     }
 
@@ -63,10 +62,10 @@ class SwitchPrinter extends SimplePrinter
      */
     private function convertSwitchToIfelse(Stmt\Switch_ $node)
     {
-        $stmt = array(
-            'else' => null,
-            'elseifs' => array(),
-        );
+        $stmt = [
+            'else'    => null,
+            'elseifs' => [],
+        ];
         $if = null;
         $ifDefined = false;
         $left = null;
@@ -84,10 +83,10 @@ class SwitchPrinter extends SimplePrinter
                 } elseif ($ifDefined === false) {
                     if ($left !== null) {
                         $lastLeft = new BinaryOp\BooleanOr($left, $case->cond);
-                        $if = new Stmt\If_($lastLeft, array('stmts' => $case->stmts));
+                        $if = new Stmt\If_($lastLeft, ['stmts' => $case->stmts]);
                         $left = null;
                     } else {
-                        $if = new Stmt\If_($case->cond, array('stmts' => $case->stmts));
+                        $if = new Stmt\If_($case->cond, ['stmts' => $case->stmts]);
                     }
                     $ifDefined = true;
                 } else {
@@ -102,11 +101,11 @@ class SwitchPrinter extends SimplePrinter
             }
         }
         $elseifs = array_reverse($stmt['elseifs']);
-        $if = new Stmt\If_($if->cond, array(
-            'stmts' => $if->stmts,
+        $if = new Stmt\If_($if->cond, [
+            'stmts'   => $if->stmts,
             'elseifs' => $elseifs,
-            'else' => $stmt['else'],
-        ));
+            'else'    => $stmt['else'],
+        ]);
 
         return $this->dispatcher->pStmt_If($if);
     }

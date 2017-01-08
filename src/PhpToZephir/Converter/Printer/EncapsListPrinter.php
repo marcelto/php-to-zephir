@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer;
 
 use PhpToZephir\Converter\SimplePrinter;
@@ -16,9 +15,9 @@ class EncapsListPrinter extends SimplePrinter
         $return = '';
         foreach ($encapsList as $element) {
             if (is_string($element)) {
-                $return .= addcslashes($element, "\n\r\t\f\v$".$quote.'\\');
+                $return .= addcslashes($element, "\n\r\t\f\v$" . $quote . '\\');
             } else {
-                $return .= '{'.$this->dispatcher->p($element).'}';
+                $return .= '{' . $this->dispatcher->p($element) . '}';
             }
         }
 

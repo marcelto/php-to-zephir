@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Method;
 
 class MethodExistTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class MethodExistTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Method;
 
 class MethodExist

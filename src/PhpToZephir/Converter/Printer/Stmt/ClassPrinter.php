@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpToZephir\Converter\Dispatcher;
@@ -71,18 +70,18 @@ class ClassPrinter
 
         foreach ($this->nodeFetcher->foreachNodes($node->stmts) as $stmt) {
             if ($stmt['node'] instanceof AssignOp\Plus && $stmt['node']->expr instanceof Array_) {
-            	$addArrayPlusMethod = true;
-            	break;
+                $addArrayPlusMethod = true;
+                break;
             }
         }
 
         return $this->dispatcher->pModifiers($node->type)
-             .'class '.$node->name
-             .(null !== $node->extends ? ' extends '.$this->dispatcher->p($node->extends) : '')
-             .(!empty($node->implements) ? ' implements '.$this->dispatcher->pCommaSeparated($node->implements) : '')
-             ."\n".'{'.$this->dispatcher->pStmts($node->stmts)."\n" . ($addArrayPlusMethod === true ? $this->printArrayPlusMethod() : '').'}';
+            . 'class ' . $node->name
+            . (null !== $node->extends ? ' extends ' . $this->dispatcher->p($node->extends) : '')
+            . (!empty($node->implements) ? ' implements ' . $this->dispatcher->pCommaSeparated($node->implements) : '')
+            . "\n" . '{' . $this->dispatcher->pStmts($node->stmts) . "\n" . ($addArrayPlusMethod === true ? $this->printArrayPlusMethod() : '') . '}';
     }
-    
+
     private function printArrayPlusMethod()
     {
         return '    private function array_plus(array1, array2)

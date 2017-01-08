@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\ArrayManipulation\Both;
 
 class AssignLeftWithArrayDimLeftRightTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class AssignLeftWithArrayDimLeftRightTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Simple;
 
 class ArrayDim

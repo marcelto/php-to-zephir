@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\ArrayManipulation;
 
 class TmpArrayInMethodCallTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class TmpArrayInMethodCallTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\ArrayManipulation;
 
 class SimpleTmpArray
@@ -58,10 +56,10 @@ class SimpleTmpArray
 EOT;
         $this->assertConvertToZephir($php, $zephir);
     }
-    
+
     public function testAssignTmpArray()
     {
-    	$php = <<<'EOT'
+        $php = <<<'EOT'
 <?php
     
 namespace Code\ArrayManipulation;
@@ -85,7 +83,7 @@ class AssignTmpArray
     }
 }
 EOT;
-    	$zephir = <<<'EOT'
+        $zephir = <<<'EOT'
 namespace Code\ArrayManipulation;
 
 class AssignTmpArray
@@ -111,6 +109,6 @@ class AssignTmpArray
 
 }
 EOT;
-    	$this->assertConvertToZephir($php, $zephir);
+        $this->assertConvertToZephir($php, $zephir);
     }
 }

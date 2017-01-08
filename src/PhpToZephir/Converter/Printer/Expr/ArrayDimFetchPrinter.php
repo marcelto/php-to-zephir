@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpToZephir\Converter\Dispatcher;
@@ -24,7 +23,7 @@ class ArrayDimFetchPrinter
     /**
      * @var array
      */
-    private static $createdVars = array();
+    private static $createdVars = [];
 
     /**
      * @param Dispatcher       $dispatcher
@@ -37,10 +36,10 @@ class ArrayDimFetchPrinter
         $this->logger = $logger;
         $this->arrayManipulator = $arrayManipulator;
     }
-    
+
     public static function resetCreatedVars()
     {
-        self::$createdVars = array();
+        self::$createdVars = [];
     }
 
     public static function getType()
@@ -57,14 +56,14 @@ class ArrayDimFetchPrinter
         }
 
         $result = $this->dispatcher->pVarOrNewExpr($node->var)
-             .'['.(null !== $node->dim ? $this->dispatcher->p($node->dim) : '').']';
+            . '[' . (null !== $node->dim ? $this->dispatcher->p($node->dim) : '') . ']';
 
         if ($returnAsArray === true) {
-            return array(
-                'head' => '',
+            return [
+                'head'     => '',
                 'lastExpr' => $result,
-                'vars' => array()
-            );
+                'vars'     => []
+            ];
         }
 
         return $result;
@@ -75,42 +74,42 @@ class ArrayDimFetchPrinter
      */
     private function splitArray(array $collected, $returnAsArray)
     {
-        $var         = $collected[0];
-        $lastExpr    = $this->dispatcher->p($var);
-        $createAsTmp = array();
-        $head        = array();
-        $vars        = array();
+        $var = $collected[0];
+        $lastExpr = $this->dispatcher->p($var);
+        $createAsTmp = [];
+        $head = [];
+        $vars = [];
 
         unset($collected[0]);
 
         foreach ($collected as $expr) {
             if ($expr['splitTab'] === true) {
-                $createAsTmp = $this->addAsTmp($createAsTmp, $expr['var'] );
-                $tmpVarName  = 'tmp' . ucfirst($expr['var']) . $createAsTmp[$expr['var']];
-                $vars[]      = $tmpVarName;
-                $head[]      = $expr['expr'];
-                $head[]      = 'let ' . $tmpVarName . ' = ' . $expr['var'] . ";\n";
-                $lastExpr .= '[' . $tmpVarName .']';
+                $createAsTmp = $this->addAsTmp($createAsTmp, $expr['var']);
+                $tmpVarName = 'tmp' . ucfirst($expr['var']) . $createAsTmp[$expr['var']];
+                $vars[] = $tmpVarName;
+                $head[] = $expr['expr'];
+                $head[] = 'let ' . $tmpVarName . ' = ' . $expr['var'] . ";\n";
+                $lastExpr .= '[' . $tmpVarName . ']';
             } else {
-                $lastExpr .= '['.$expr['expr'].']';
+                $lastExpr .= '[' . $expr['expr'] . ']';
             }
         }
 
         if ($returnAsArray === true) {
-            return array(
-                'head' => !empty($head) ? "\n" . implode("", $head) . "\n" : "",
+            return [
+                'head'     => !empty($head) ? "\n" . implode("", $head) . "\n" : "",
                 'lastExpr' => $lastExpr,
-                'vars' => $vars
-            );
+                'vars'     => $vars
+            ];
         }
 
-        return (!empty($head) ? "\n" . implode("", $head) . "\n" : "").$lastExpr;
+        return (!empty($head) ? "\n" . implode("", $head) . "\n" : "") . $lastExpr;
     }
-    
+
     private function addAsTmp(array $createAsTmp, $varname)
     {
         if (!isset(self::$createdVars[$this->dispatcher->getLastMethod()])) {
-            self::$createdVars[$this->dispatcher->getLastMethod()] = array();
+            self::$createdVars[$this->dispatcher->getLastMethod()] = [];
         }
 
         if (isset(self::$createdVars[$this->dispatcher->getLastMethod()][$varname])) {

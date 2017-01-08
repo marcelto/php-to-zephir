@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -22,7 +21,7 @@ class StaticVarPrinter extends SimplePrinter
      */
     public function convert(Stmt\StaticVar $node)
     {
-        return '$'.$node->name
-             .(null !== $node->default ? ' = '.$this->dispatcher->p($node->default) : '');
+        return '$' . $node->name
+            . (null !== $node->default ? ' = ' . $this->dispatcher->p($node->default) : '');
     }
 }

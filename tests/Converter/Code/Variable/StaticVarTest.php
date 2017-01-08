@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Variable;
 
 class StaticVarTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class StaticVarTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Variable;
 
 class SimpleTmpArray

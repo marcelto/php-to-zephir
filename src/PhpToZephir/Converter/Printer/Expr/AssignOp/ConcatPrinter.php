@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr\AssignOp;
 
 use PhpParser\Node\Expr;
@@ -15,6 +14,6 @@ class ConcatPrinter extends SimplePrinter
 
     public function convert(AssignOp\Concat $node)
     {
-        return 'let '.$this->dispatcher->pInfixOp('Expr_AssignOp_Concat', $node->var, ' .= ', $node->expr);
+        return 'let ' . $this->dispatcher->pInfixOp('Expr_AssignOp_Concat', $node->var, ' .= ', $node->expr);
     }
 }

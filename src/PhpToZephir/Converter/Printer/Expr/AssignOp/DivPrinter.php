@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr\AssignOp;
 
 use PhpParser\Node\Expr;
@@ -15,6 +14,6 @@ class DivPrinter extends SimplePrinter
 
     public function convert(AssignOp\Div $node)
     {
-        return 'let '.$this->dispatcher->pInfixOp('Expr_AssignOp_Div', $node->var, ' /= ', $node->expr);
+        return 'let ' . $this->dispatcher->pInfixOp('Expr_AssignOp_Div', $node->var, ' /= ', $node->expr);
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt\TraitUseAdaptation;
 
 use PhpParser\Node\Stmt;
@@ -14,7 +13,7 @@ class PrecedencePrinter extends SimplePrinter
 
     public function convert(Stmt\TraitUseAdaptation\Precedence $node)
     {
-        return $this->dispatcher->p($node->trait).'::'.$node->method
-             .' insteadof '.$this->dispatcher->pCommaSeparated($node->insteadof).';';
+        return $this->dispatcher->p($node->trait) . '::' . $node->method
+            . ' insteadof ' . $this->dispatcher->pCommaSeparated($node->insteadof) . ';';
     }
 }

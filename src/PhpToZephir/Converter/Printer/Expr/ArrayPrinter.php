@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpToZephir\Converter\Dispatcher;
@@ -53,12 +52,12 @@ class ArrayPrinter
         $collected = $this->assignManipulator->collectAssignInCondition($node->items);
         $node->items = $this->assignManipulator->transformAssignInConditionTest($node->items);
 
-        $collected->setExpr('['.$this->dispatcher->pCommaSeparated($node->items).']');
+        $collected->setExpr('[' . $this->dispatcher->pCommaSeparated($node->items) . ']');
 
         if ($returnAsArray === true) {
             return $collected;
         } else {
-            return $collected->getCollected().$collected->getExpr();
+            return $collected->getCollected() . $collected->getExpr();
         }
     }
 }

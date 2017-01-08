@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpToZephir\Converter\Dispatcher;
@@ -52,6 +51,6 @@ class ReturnPrinter
         $collected = $this->assignManipulator->collectAssignInCondition($node->expr);
         $node->expr = $this->assignManipulator->transformAssignInConditionTest($node->expr);
 
-        return $collected->getCollected().'return'.(null !== $node->expr ? ' '.$this->dispatcher->p($node->expr) : '').';';
+        return $collected->getCollected() . 'return' . (null !== $node->expr ? ' ' . $this->dispatcher->p($node->expr) : '') . ';';
     }
 }

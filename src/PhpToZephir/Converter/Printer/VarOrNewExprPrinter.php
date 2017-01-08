@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer;
 
 use PhpParser\Node;
@@ -24,7 +23,7 @@ class VarOrNewExprPrinter extends SimplePrinter
     public function convert(Node $node)
     {
         if ($node instanceof Expr\New_) {
-            return '('.$this->dispatcher->p($node).')';
+            return '(' . $this->dispatcher->p($node) . ')';
         } else {
             return $this->dispatcher->p($node);
         }

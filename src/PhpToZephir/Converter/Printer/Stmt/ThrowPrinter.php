@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -22,6 +21,6 @@ class ThrowPrinter extends SimplePrinter
      */
     public function convert(Stmt\Throw_ $node)
     {
-        return 'throw '.$this->dispatcher->p($node->expr).';';
+        return 'throw ' . $this->dispatcher->p($node->expr) . ';';
     }
 }

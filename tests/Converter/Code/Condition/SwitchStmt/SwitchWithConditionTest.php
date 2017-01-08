@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Condition\SwitchStmt;
 
 class SwitchWithConditionTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class SwitchWithConditionTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Condition\SwitchStmt;
 
 class SwitchWithCondition

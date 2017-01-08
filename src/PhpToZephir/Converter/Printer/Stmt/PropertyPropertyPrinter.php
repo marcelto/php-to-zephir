@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -22,6 +21,6 @@ class PropertyPropertyPrinter extends SimplePrinter
      */
     public function convert(Stmt\PropertyProperty $node)
     {
-        return $node->name.(null !== $node->default ? ' = '.$this->dispatcher->p($node->default) : '');
+        return $node->name . (null !== $node->default ? ' = ' . $this->dispatcher->p($node->default) : '');
     }
 }

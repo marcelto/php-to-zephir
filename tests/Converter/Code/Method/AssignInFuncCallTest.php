@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Method;
 
 class AssignInFuncCallTest extends \ConverterBaseTest
@@ -48,10 +47,10 @@ class AssignInFuncCall
 EOT;
         $this->assertConvertToZephir($php, $zephir);
     }
-    
+
     public function testSimple()
     {
-    	$php = <<<'EOT'
+        $php = <<<'EOT'
 <?php
     
 namespace Code\Method;
@@ -70,7 +69,7 @@ class AssignInFuncCall
     }
 }
 EOT;
-    	$zephir = <<<'EOT'
+        $zephir = <<<'EOT'
 namespace Code\Method;
 
 class AssignInFuncCall
@@ -91,6 +90,6 @@ class AssignInFuncCall
 
 }
 EOT;
-    	$this->assertConvertToZephir($php, $zephir);
+        $this->assertConvertToZephir($php, $zephir);
     }
 }

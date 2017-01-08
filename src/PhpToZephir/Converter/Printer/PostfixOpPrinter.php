@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer;
 
 use PhpParser\Node;
@@ -23,6 +22,6 @@ class PostfixOpPrinter extends SimplePrinter
     {
         list($precedence, $associativity) = $this->dispatcher->getPrecedenceMap($type);
 
-        return $this->dispatcher->pPrec($node, $precedence, $associativity, -1).$operatorString;
+        return $this->dispatcher->pPrec($node, $precedence, $associativity, -1) . $operatorString;
     }
 }

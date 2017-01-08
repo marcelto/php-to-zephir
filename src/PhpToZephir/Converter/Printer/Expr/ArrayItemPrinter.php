@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -31,7 +30,7 @@ class ArrayItemPrinter extends SimplePrinter
             );
         }
 
-        return (null !== $node->key ? $this->dispatcher->p($node->key).' : ' : '')
-             .$this->dispatcher->p($node->value);
+        return (null !== $node->key ? $this->dispatcher->p($node->key) . ' : ' : '')
+            . $this->dispatcher->p($node->value);
     }
 }

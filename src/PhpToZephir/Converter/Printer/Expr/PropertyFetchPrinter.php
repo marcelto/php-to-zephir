@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -22,6 +21,6 @@ class PropertyFetchPrinter extends SimplePrinter
      */
     public function convert(Expr\PropertyFetch $node)
     {
-        return $this->dispatcher->pVarOrNewExpr($node->var).'->'.$this->dispatcher->pObjectProperty($node->name);
+        return $this->dispatcher->pVarOrNewExpr($node->var) . '->' . $this->dispatcher->pObjectProperty($node->name);
     }
 }

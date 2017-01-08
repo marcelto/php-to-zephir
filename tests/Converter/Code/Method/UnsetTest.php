@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Method;
 
 class UnsetTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class UnsetTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Method;
 
 class TestUnset
@@ -39,10 +37,10 @@ class TestUnset
 EOT;
         $this->assertConvertToZephir($php, $zephir);
     }
-    
+
     public function testOnArrayAccess()
     {
-    	$php = <<<'EOT'
+        $php = <<<'EOT'
 <?php
     
 namespace Code\Method;
@@ -57,7 +55,7 @@ class TestUnset
     }
 }
 EOT;
-    	$zephir = <<<'EOT'
+        $zephir = <<<'EOT'
 namespace Code\Method;
 
 class TestUnset
@@ -73,12 +71,12 @@ class TestUnset
 
 }
 EOT;
-    	$this->assertConvertToZephir($php, $zephir);
+        $this->assertConvertToZephir($php, $zephir);
     }
-    
+
     public function testOnPropertyAccess()
     {
-    	$php = <<<'EOT'
+        $php = <<<'EOT'
 <?php
     
 namespace Code\Method;
@@ -92,7 +90,7 @@ class TestUnset
     }
 }
 EOT;
-    	$zephir = <<<'EOT'
+        $zephir = <<<'EOT'
 namespace Code\Method;
 
 class TestUnset
@@ -106,6 +104,6 @@ class TestUnset
 
 }
 EOT;
-    	$this->assertConvertToZephir($php, $zephir);
+        $this->assertConvertToZephir($php, $zephir);
     }
 }

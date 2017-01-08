@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer;
 
 use PhpToZephir\Converter\SimplePrinter;

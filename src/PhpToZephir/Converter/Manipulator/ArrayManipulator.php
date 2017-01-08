@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Manipulator;
 
 use PhpParser\Node\Expr;
@@ -32,7 +31,7 @@ class ArrayManipulator
     /**
      * @param Expr\ArrayDimFetch $node
      */
-    private function findComplexArrayDimFetch($node, $collected = array())
+    private function findComplexArrayDimFetch($node, $collected = [])
     {
         if ($this->isInvalidInArrayDimFetch($node) === true) {
             if ($node->dim instanceof Expr\FuncCall) {
@@ -43,17 +42,17 @@ class ArrayManipulator
                     $this->dispatcher->getMetadata()->getClass()
                 );
             } else {
-                $collected[] = array(
-                    'expr' => $this->dispatcher->p($node->dim).";\n",
+                $collected[] = [
+                    'expr'     => $this->dispatcher->p($node->dim) . ";\n",
                     'splitTab' => true,
-                    'var' => $this->dispatcher->p($node->dim->var),
-                );
+                    'var'      => $this->dispatcher->p($node->dim->var),
+                ];
             }
         } else {
             if ($node->dim === null) {
-                $collected[] = array('expr' => $this->dispatcher->p($node->var), 'splitTab' => false);
+                $collected[] = ['expr' => $this->dispatcher->p($node->var), 'splitTab' => false];
             } else {
-                $collected[] = array('expr' => $this->dispatcher->p($node->dim), 'splitTab' => false);
+                $collected[] = ['expr' => $this->dispatcher->p($node->dim), 'splitTab' => false];
             }
         }
 
@@ -77,7 +76,7 @@ class ArrayManipulator
             return $this->isInvalidIn($node);
         } elseif ($node->dim instanceof BinaryOp\Concat) {
             return $this->isInvalidInArrayDimFetch($node->dim->left)
-            && $this->isInvalidInArrayDimFetch($node->dim->right);
+                && $this->isInvalidInArrayDimFetch($node->dim->right);
         } else {
             return $this->isInvalidIn($node->dim);
         }
@@ -91,18 +90,18 @@ class ArrayManipulator
     private function isInvalidIn($node)
     {
         return ($node instanceof Expr\Variable) === false
-        && ($node instanceof Expr\ClassConstFetch) === false
-        && ($node instanceof Expr\Cast) === false
-        && ($node instanceof Expr\ConstFetch) === false
-        && ($node instanceof Expr\StaticCall) === false
-        && ($node instanceof Expr\PropertyFetch) === false
-        && ($node instanceof Expr\ArrayDimFetch) === false
-        && ($node instanceof Expr\Assign) === false
-        && ($node instanceof BinaryOp\Minus) === false
-        && ($node instanceof BinaryOp\Plus) === false
-        && ($node instanceof BinaryOp\Mod) === false
-        && ($node instanceof Scalar) === false
-        && $node !== null;
+            && ($node instanceof Expr\ClassConstFetch) === false
+            && ($node instanceof Expr\Cast) === false
+            && ($node instanceof Expr\ConstFetch) === false
+            && ($node instanceof Expr\StaticCall) === false
+            && ($node instanceof Expr\PropertyFetch) === false
+            && ($node instanceof Expr\ArrayDimFetch) === false
+            && ($node instanceof Expr\Assign) === false
+            && ($node instanceof BinaryOp\Minus) === false
+            && ($node instanceof BinaryOp\Plus) === false
+            && ($node instanceof BinaryOp\Mod) === false
+            && ($node instanceof Scalar) === false
+            && $node !== null;
     }
 
     /**

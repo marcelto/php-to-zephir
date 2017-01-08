@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpToZephir\Converter\Dispatcher;
@@ -50,9 +49,9 @@ class VariablePrinter
     public function convert(Expr\Variable $node)
     {
         if ($node->name instanceof Expr) {
-            return '{'.$this->dispatcher->p($node->name).'}';
+            return '{' . $this->dispatcher->p($node->name) . '}';
         } else {
-            return ''.$this->reservedWordReplacer->replace($node->name);
+            return '' . $this->reservedWordReplacer->replace($node->name);
         }
     }
 }

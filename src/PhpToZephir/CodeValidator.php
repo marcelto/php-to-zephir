@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir;
 
 use Zephir\Commands\CommandGenerate;
@@ -20,8 +19,9 @@ class CodeValidator
 
         chdir(FileWriter::BASE_DESTINATION . $namespace);
 
-        if (!defined('ZEPHIRPATH'))
-            define('ZEPHIRPATH', realpath(__DIR__.'/../../vendor/phalcon/zephir').'/');
+        if (!defined('ZEPHIRPATH')) {
+            define('ZEPHIRPATH', realpath(__DIR__ . '/../../vendor/phalcon/zephir') . '/');
+        }
 
         $generateCommand = new CommandGenerate();
         $cleanCommand = new CommandFullClean();

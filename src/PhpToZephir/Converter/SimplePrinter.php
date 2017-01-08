@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter;
 
 use PhpToZephir\Logger;

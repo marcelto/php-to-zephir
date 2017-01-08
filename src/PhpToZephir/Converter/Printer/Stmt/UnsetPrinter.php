@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -25,11 +24,11 @@ class UnsetPrinter extends SimplePrinter
     {
         $unset = '';
         foreach ($node->vars as $var) {
-        	if ($var instanceof Expr\Variable) {
-        		$unset .= 'let '.$this->dispatcher->p($var).' = null;'."\n";
-        	} else {
-            	$unset .= 'unset '.$this->dispatcher->p($var).';'."\n";
-        	}
+            if ($var instanceof Expr\Variable) {
+                $unset .= 'let ' . $this->dispatcher->p($var) . ' = null;' . "\n";
+            } else {
+                $unset .= 'unset ' . $this->dispatcher->p($var) . ';' . "\n";
+            }
         }
 
         return $unset;

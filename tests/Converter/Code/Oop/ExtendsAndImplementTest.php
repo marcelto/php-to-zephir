@@ -1,14 +1,13 @@
 <?php
-
 namespace Converter\Code\Oop;
 
 class ExtendsAndImplementTest extends \ConverterBaseTest
 {
     public function testWithUse()
     {
-        $php = array(<<<'EOT'
-<?php
-
+        $php = array(
+            <<<'EOT'
+            <?php
 namespace Code\Oop;
 
 use Code\MyClass;
@@ -19,10 +18,9 @@ class ExtendsAndImplementTest extends MyClass implements MyImplementation
 
 }
 EOT
-,
-<<<'EOT'
-<?php
-
+        ,
+            <<<'EOT'
+            <?php
 namespace Code;
 
 class MyClass
@@ -30,10 +28,9 @@ class MyClass
 
 }
 EOT
-,
-<<<'EOT'
-<?php
-
+        ,
+            <<<'EOT'
+            <?php
 namespace Code;
 
 interface MyImplementation
@@ -41,9 +38,10 @@ interface MyImplementation
 
 }
 EOT
-);
-        $zephir = array(<<<'EOT'
-namespace Code\Oop;
+        );
+        $zephir = array(
+            <<<'EOT'
+            namespace Code\Oop;
 
 use Code\MyClass;
 use Code\MyImplementation;
@@ -51,30 +49,31 @@ class ExtendsAndImplementTest extends MyClass implements MyImplementation
 {
 }
 EOT
-,
-<<<'EOT'
-namespace Code;
+        ,
+            <<<'EOT'
+            namespace Code;
 
 class MyClass
 {
 }
 EOT
-,
-<<<'EOT'
-namespace Code;
+        ,
+            <<<'EOT'
+            namespace Code;
 
 interface MyImplementation
 {
 }
 EOT
-);    
+        );
         $this->assertConvertToZephir($php, $zephir);
     }
 
     public function testWithoutUse()
     {
-        $php = array(<<<'EOT'
-<?php
+        $php = array(
+            <<<'EOT'
+            <?php
     
 namespace Code\Oop;
 
@@ -83,9 +82,9 @@ class ExtendsAndImplementTest extends MyClass implements MyImplementation
     
 }
 EOT
-,
-<<<'EOT'
-<?php
+        ,
+            <<<'EOT'
+            <?php
     
 namespace Code\Oop;
     
@@ -94,9 +93,9 @@ class MyClass
     
 }
 EOT
-,
-<<<'EOT'
-<?php
+        ,
+            <<<'EOT'
+            <?php
     
 namespace Code\Oop;
     
@@ -105,26 +104,27 @@ interface MyImplementation
     
 }
 EOT
-);
+        );
 
-        $zephir = array(<<<'EOT'
-namespace Code\Oop;
+        $zephir = array(
+            <<<'EOT'
+            namespace Code\Oop;
 
 class ExtendsAndImplementTest extends MyClass implements MyImplementation
 {
 }
 EOT
-,
-<<<'EOT'
-namespace Code\Oop;
+        ,
+            <<<'EOT'
+            namespace Code\Oop;
 
 class MyClass
 {
 }
 EOT
-,
-<<<'EOT'
-namespace Code\Oop;
+        ,
+            <<<'EOT'
+            namespace Code\Oop;
 
 interface MyImplementation
 {

@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -14,6 +13,6 @@ class EchoPrinter extends SimplePrinter
 
     public function convert(Stmt\Echo_ $node)
     {
-        return 'echo '.$this->dispatcher->pCommaSeparated($node->exprs).';';
+        return 'echo ' . $this->dispatcher->pCommaSeparated($node->exprs) . ';';
     }
 }

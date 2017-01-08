@@ -1,10 +1,4 @@
 <?php
-/**
- * Copyright (c) 2017.
- *
- *
- */
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpToZephir\Converter\Dispatcher;
@@ -115,15 +109,15 @@ class ClosurePrinter
 
         $this->dispatcher->setLastMethod($node->name);
 
-        $stmt = $this->dispatcher->pModifiers($node->type).'function '.$node->name.'(';
-        $varsInMethodSign = array();
+        $stmt = $this->dispatcher->pModifiers($node->type) . 'function ' . $node->name . '(';
+        $varsInMethodSign = [];
 
         if (isset($types['params']) === true) {
-            $params = array();
+            $params = [];
             foreach ($types['params'] as $type) {
                 $varsInMethodSign[] = $type['name'];
                 $stringType = $this->printType($type);
-                $params[] = ((!empty($stringType)) ? $stringType.' ' : '').''.$type['name'].(($type['default'] === null) ? '' : ' = '.$this->dispatcher->p($type['default']));
+                $params[] = ((!empty($stringType)) ? $stringType . ' ' : '') . '' . $type['name'] . (($type['default'] === null) ? '' : ' = ' . $this->dispatcher->p($type['default']));
             }
 
             $stmt .= implode(', ', $params);
@@ -131,15 +125,15 @@ class ClosurePrinter
 
         $stmt .= ')';
         $stmt .= $this->printReturn($node, $types);
-        $stmt .= (null !== $node->stmts ? "\n{".$this->printVars($node, $varsInMethodSign).
-                $this->dispatcher->pStmts($node->stmts)."\n}" : ';')."\n";
+        $stmt .= (null !== $node->stmts ? "\n{" . $this->printVars($node, $varsInMethodSign) .
+                $this->dispatcher->pStmts($node->stmts) . "\n}" : ';') . "\n";
 
         return $stmt;
     }
 
     /**
      * @param Expr\Closure $node
-     * @param array            $varsInMethodSign
+     * @param array        $varsInMethodSign
      *
      * @return string
      */
@@ -150,7 +144,7 @@ class ClosurePrinter
         $vars = array_diff(array_unique(array_filter($this->collectVars($node))), $varsInMethodSign);
 
         if (!empty($vars)) {
-            $var .= "\n    var ".implode(', ', $vars).";\n";
+            $var .= "\n    var " . implode(', ', $vars) . ";\n";
         }
 
         // dirty...
@@ -161,7 +155,7 @@ class ClosurePrinter
 
     /**
      * @param Expr\Closure $node
-     * @param array            $types
+     * @param array        $types
      *
      * @return string
      */
@@ -171,7 +165,7 @@ class ClosurePrinter
         if (array_key_exists('return', $types) === false && $this->hasReturnStatement($node) === false) {
             $stmt .= ' -> void';
         } elseif (array_key_exists('return', $types) === true && empty($types['return']['type']['value']) === false) {
-            $stmt .= ' -> '.$this->printType($types['return']);
+            $stmt .= ' -> ' . $this->printType($types['return']);
         }
 
         return $stmt;
@@ -184,7 +178,7 @@ class ClosurePrinter
      */
     private function hasReturnStatement($nodes)
     {
-        foreach ($this->nodeFetcher->foreachNodes($nodes,[],[],true) as $nodeData) {
+        foreach ($this->nodeFetcher->foreachNodes($nodes, [], [], true) as $nodeData) {
             $node = $nodeData['node'];
             if ($node instanceof Stmt\Return_) {
                 return true;
@@ -200,7 +194,7 @@ class ClosurePrinter
      *
      * @return \ArrayIterator|array
      */
-    private function collectVars($node, array $vars = array())
+    private function collectVars($node, array $vars = [])
     {
         $noFetcher = new NodeFetcher();
 
@@ -209,12 +203,13 @@ class ClosurePrinter
                 if (($stmt['node']->var instanceof Expr\PropertyFetch) === false
                     && ($stmt['node']->var instanceof Expr\StaticPropertyFetch) === false
                     && ($stmt['node']->var instanceof Expr\ArrayDimFetch) === false
-                    && ($stmt['node']->var instanceof Expr\List_) === false) {
+                    && ($stmt['node']->var instanceof Expr\List_) === false
+                ) {
                     if (is_object($stmt['node']->var->name) === false) { // if true it is a dynamic var
                         $vars[] = $stmt['node']->var->name;
                     }
                 } elseif (($stmt['node']->var instanceof Expr\List_) === true) {
-                    $varInList = array();
+                    $varInList = [];
                     foreach ($stmt['node']->var->items as $var) {
                         if (null !== $var) {
                             $varInList[] = ucfirst($this->dispatcher->p($var));
@@ -224,7 +219,7 @@ class ClosurePrinter
                         }
                     }
 
-                    $vars[] = 'tmpList' . str_replace(array('[', ']', '"'), '', implode('', $varInList));
+                    $vars[] = 'tmpList' . str_replace(['[', ']', '"'], '', implode('', $varInList));
                 }
             } elseif ($stmt['node'] instanceof Stmt\Foreach_) {
                 if (null !== $stmt['node']->keyVar) {
@@ -241,22 +236,24 @@ class ClosurePrinter
                 foreach ($this->nodeFetcher->foreachNodes($stmt['node']->cond) as $nodeData) {
                     $node = $nodeData['node'];
                     if ($node instanceof Expr\Array_) {
-                        $vars[] = 'tmpArray'.md5(serialize($node->items));
+                        $vars[] = 'tmpArray' . md5(serialize($node->items));
                     }
                 }
             } elseif ($stmt['node'] instanceof Stmt\Catch_) {
                 $vars[] = $stmt['node']->var;
             } elseif ($stmt['node'] instanceof Stmt\Return_ && $stmt['node']->expr instanceof Expr\Array_) {
-                $vars[] = 'tmpArray'.md5(serialize($stmt['node']->expr->items));
+                $vars[] = 'tmpArray' . md5(serialize($stmt['node']->expr->items));
             } elseif ($stmt['node'] instanceof Stmt\Static_) {
                 foreach ($stmt['node']->vars as $var) {
                     $vars[] = $var->name;
                 }
             } elseif ($stmt['node'] instanceof Arg && $stmt['node']->value instanceof Expr\Array_) {
-                $vars[] = 'tmpArray'.md5(serialize($stmt['node']->value->items));
+                $vars[] = 'tmpArray' . md5(serialize($stmt['node']->value->items));
             }
 
-            if ($stmt['node'] instanceof Expr\ArrayDimFetch && !in_array("PhpParser\Node\Expr\ArrayDimFetch", $stmt['parentClass'])) {
+            if ($stmt['node'] instanceof Expr\ArrayDimFetch && !in_array("PhpParser\Node\Expr\ArrayDimFetch",
+                    $stmt['parentClass'])
+            ) {
                 $varCreatedInArray = $this->dispatcher->pExpr_ArrayDimFetch($stmt['node'], true);
                 foreach ($varCreatedInArray['vars'] as $var) {
                     $vars[] = $var;
@@ -264,7 +261,7 @@ class ClosurePrinter
             }
         }
 
-        $vars = array_map(array($this->reservedWordReplacer, 'replace'), $vars);
+        $vars = array_map([$this->reservedWordReplacer, 'replace'], $vars);
 
         return $vars;
     }
@@ -288,6 +285,6 @@ class ClosurePrinter
             throw new \Exception('value not found');
         }
 
-        return ($type['type']['isClass'] === true) ? '<'.$type['type']['value'].'>' : $type['type']['value'];
+        return ($type['type']['isClass'] === true) ? '<' . $type['type']['value'] . '>' : $type['type']['value'];
     }
 }

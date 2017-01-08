@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Simple;
 
 class CastTest extends \ConverterBaseTest

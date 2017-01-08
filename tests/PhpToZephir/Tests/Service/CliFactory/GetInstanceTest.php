@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Tests\Service\CliFactory;
 
 use PhpToZephir\Service\CliFactory;

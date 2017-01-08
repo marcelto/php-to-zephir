@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Name;
 
 use PhpParser\Node\Name;
@@ -22,6 +21,6 @@ class FullyQualifiedPrinter extends SimplePrinter
      */
     public function convert(Name\FullyQualified $node)
     {
-        return '\\'.implode('\\', $node->parts);
+        return '\\' . implode('\\', $node->parts);
     }
 }

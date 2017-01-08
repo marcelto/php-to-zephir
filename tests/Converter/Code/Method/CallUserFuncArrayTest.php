@@ -1,10 +1,9 @@
 <?php
-
 namespace Converter\Code\Method;
 
 class CallUserFuncArrayTest extends \ConverterBaseTest
 {
-    
+
     public function testOnArrayAccess()
     {
         $php = <<<'EOT'

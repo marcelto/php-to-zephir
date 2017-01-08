@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -14,6 +13,6 @@ class ClonePrinter extends SimplePrinter
 
     public function convert(Expr\Clone_ $node)
     {
-        return 'clone '.$this->dispatcher->p($node->expr);
+        return 'clone ' . $this->dispatcher->p($node->expr);
     }
 }

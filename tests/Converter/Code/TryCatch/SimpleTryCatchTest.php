@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\TryCatch;
 
 class SimpleTryCatchTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class SimpleTryCatchTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\TryCatch;
 
 class SimpleTryCatch

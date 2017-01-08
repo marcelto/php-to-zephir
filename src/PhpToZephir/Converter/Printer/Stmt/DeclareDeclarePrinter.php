@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -22,6 +21,6 @@ class DeclareDeclarePrinter extends SimplePrinter
      */
     public function convert(Stmt\DeclareDeclare $node)
     {
-        return $node->key.' = '.$this->dispatcher->p($node->value);
+        return $node->key . ' = ' . $this->dispatcher->p($node->value);
     }
 }

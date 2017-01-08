@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Tests\CodeCollector\StringCodeCollector;
 
 use PhpToZephir\CodeCollector\StringCodeCollector;

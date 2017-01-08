@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\StrongType\ReturnStmt;
 
 class DefinedInInterfaceReturnTest extends \ConverterBaseTest
@@ -9,7 +8,6 @@ class DefinedInInterfaceReturnTest extends \ConverterBaseTest
         $php = array(
             <<<'EOT'
 <?php
-
 namespace Code\StrongType\ReturnStmt;
 
 interface MyInterface
@@ -23,7 +21,6 @@ EOT
 ,
 <<<'EOT'
 <?php
-
 namespace Code\StrongType\ReturnStmt;
 
 class DefinedInInterfaceReturn implements MyInterface

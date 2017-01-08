@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Tests\Render\StringRender;
 
 use PhpToZephir\Render\StringRender;

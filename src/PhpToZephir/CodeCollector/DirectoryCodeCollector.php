@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\CodeCollector;
 
 class DirectoryCodeCollector implements CodeCollectorInterface
@@ -36,7 +35,7 @@ class DirectoryCodeCollector implements CodeCollectorInterface
      */
     public function getCode()
     {
-        $files = array();
+        $files = [];
 
         foreach ($this->directories as $directory) {
             foreach ($this->findFiles($directory) as $file) {

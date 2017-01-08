@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -14,6 +13,7 @@ class NamespacePrinter extends SimplePrinter
 
     public function convert(Stmt\Namespace_ $node)
     {
-        return 'namespace '.implode('\\', $node->name->parts).';'."\n".$this->dispatcher->pStmts($node->stmts, false);
+        return 'namespace ' . implode('\\', $node->name->parts) . ';' . "\n" . $this->dispatcher->pStmts($node->stmts,
+                false);
     }
 }

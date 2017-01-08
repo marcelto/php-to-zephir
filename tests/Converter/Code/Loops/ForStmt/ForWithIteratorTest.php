@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Loops\ForStmt;
 
 class ForWithIteratorTest extends \ConverterBaseTest

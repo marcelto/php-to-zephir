@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr\AssignOp;
 
 use PhpParser\Node\Expr;
@@ -16,10 +15,11 @@ class PlusPrinter extends SimplePrinter
 
     public function convert(AssignOp\Plus $node)
     {
-    	if ($node->expr instanceof Array_) {
-    		return 'let '.$this->dispatcher->pInfixOp('Expr_AssignOp_Plus', $node->var, ' = this->array_plus(' .$this->dispatcher->p($node->var) . ', ', $node->expr) . ')';
-    	} else {
-        	return 'let '.$this->dispatcher->pInfixOp('Expr_AssignOp_Plus', $node->var, ' += ', $node->expr);
-    	}
+        if ($node->expr instanceof Array_) {
+            return 'let ' . $this->dispatcher->pInfixOp('Expr_AssignOp_Plus', $node->var,
+                    ' = this->array_plus(' . $this->dispatcher->p($node->var) . ', ', $node->expr) . ')';
+        } else {
+            return 'let ' . $this->dispatcher->pInfixOp('Expr_AssignOp_Plus', $node->var, ' += ', $node->expr);
+        }
     }
 }

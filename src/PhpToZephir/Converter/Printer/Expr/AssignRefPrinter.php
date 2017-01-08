@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -29,6 +28,6 @@ class AssignRefPrinter extends SimplePrinter
             $this->dispatcher->getMetadata()->getFullQualifiedNameClass()
         );
 
-        return 'let '.$this->dispatcher->pInfixOp('Expr_AssignRef', $node->var, ' = ', $node->expr);
+        return 'let ' . $this->dispatcher->pInfixOp('Expr_AssignRef', $node->var, ' = ', $node->expr);
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Oop;
 
 class StaticPropertyTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class StaticPropertyTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Oop;
 
 class StaticProperty

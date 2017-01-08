@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -22,6 +21,6 @@ class BreakPrinter extends SimplePrinter
      */
     public function convert(Stmt\Break_ $node)
     {
-        return 'break'.($node->num !== null ? ' '.$this->dispatcher->p($node->num) : '').';';
+        return 'break' . ($node->num !== null ? ' ' . $this->dispatcher->p($node->num) : '') . ';';
     }
 }

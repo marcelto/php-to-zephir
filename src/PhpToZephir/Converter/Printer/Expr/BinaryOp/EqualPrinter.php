@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr\BinaryOp;
 
 use PhpParser\Node\Expr\BinaryOp;

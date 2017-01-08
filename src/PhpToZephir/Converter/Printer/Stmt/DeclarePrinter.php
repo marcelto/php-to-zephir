@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -14,7 +13,7 @@ class DeclarePrinter extends SimplePrinter
 
     public function convert(Stmt\Declare_ $node)
     {
-        return 'declare ('.$this->dispatcher->pCommaSeparated($node->declares).') {'
-             .$this->dispatcher->pStmts($node->stmts)."\n".'}';
+        return 'declare (' . $this->dispatcher->pCommaSeparated($node->declares) . ') {'
+            . $this->dispatcher->pStmts($node->stmts) . "\n" . '}';
     }
 }

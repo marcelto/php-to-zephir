@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer;
 
 use PhpToZephir\Converter\SimplePrinter;
@@ -22,7 +21,7 @@ class ImplodePrinter extends SimplePrinter
      */
     public function convert(array $nodes, $glue = '')
     {
-        $pNodes = array();
+        $pNodes = [];
         foreach ($nodes as $node) {
             $pNodes[] = $this->dispatcher->p($node);
         }

@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer;
 
 use PhpToZephir\Converter\Dispatcher;
@@ -27,13 +26,13 @@ class StmtsPrinter extends SimplePrinter
         $result = '';
         foreach ($nodes as $node) {
             $result .= "\n"
-                    .$this->pComments($node->getAttribute('comments', array()))
-                    .$this->dispatcher->p($node)
-                    .($node instanceof Expr ? ';' : '');
+                . $this->pComments($node->getAttribute('comments', []))
+                . $this->dispatcher->p($node)
+                . ($node instanceof Expr ? ';' : '');
         }
 
         if ($indent) {
-            return preg_replace('~\n(?!$|'.Dispatcher::noIndentToken.')~', "\n    ", $result);
+            return preg_replace('~\n(?!$|' . Dispatcher::noIndentToken . ')~', "\n    ", $result);
         } else {
             return $result;
         }
@@ -49,7 +48,7 @@ class StmtsPrinter extends SimplePrinter
         $result = '';
 
         foreach ($comments as $comment) {
-            $result .= $comment->getReformattedText()."\n";
+            $result .= $comment->getReformattedText() . "\n";
         }
 
         return $result;

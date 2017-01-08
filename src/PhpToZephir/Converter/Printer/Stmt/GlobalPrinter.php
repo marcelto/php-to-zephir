@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -14,6 +13,6 @@ class GlobalPrinter extends SimplePrinter
 
     public function convert(Stmt\Global_ $node)
     {
-        return 'global '.$this->dispatcher->pCommaSeparated($node->vars).';';
+        return 'global ' . $this->dispatcher->pCommaSeparated($node->vars) . ';';
     }
 }

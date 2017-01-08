@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\FunctionCall;
 
 class FunctionCallWithAssignInsideTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class FunctionCallWithAssignInsideTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\FunctionCall;
 
 class FunctionCallWithAssignInsideTest

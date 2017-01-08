@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Render;
 
 use PhpToZephir\FileWriter;
@@ -25,7 +24,7 @@ class FileRender implements RenderInterface
     public function render(array $file)
     {
         $this->fileWriter->write($file);
-        
+
         return $file['zephir'];
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer;
 
 use PhpParser\Node;
@@ -31,9 +30,9 @@ class ParamPrinter extends SimplePrinter
             );
         }
 
-        return ($node->type ? (is_string($node->type) ? $node->type : $this->dispatcher->p($node->type)).' ' : '')
-             .($node->variadic ? '... ' : '')
-             .''.$node->name
-             .($node->default ? ' = '.$this->dispatcher->p($node->default) : '').'';
+        return ($node->type ? (is_string($node->type) ? $node->type : $this->dispatcher->p($node->type)) . ' ' : '')
+            . ($node->variadic ? '... ' : '')
+            . '' . $node->name
+            . ($node->default ? ' = ' . $this->dispatcher->p($node->default) : '') . '';
     }
 }

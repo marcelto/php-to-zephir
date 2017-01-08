@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Tests\CodeCollector\FileCodeCollector;
 
 use PhpToZephir\CodeCollector\FileCodeCollector;

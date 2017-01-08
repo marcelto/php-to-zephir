@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Tests\CodeCollector\DirectoryCodeCollector;
 
 use PhpToZephir\CodeCollector\DirectoryCodeCollector;

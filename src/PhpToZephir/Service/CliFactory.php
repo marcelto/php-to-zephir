@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of the PHP to Zephir package.
  *

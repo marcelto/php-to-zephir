@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\CodeCollector;
 
 class FileCodeCollector implements CodeCollectorInterface
@@ -22,7 +21,7 @@ class FileCodeCollector implements CodeCollectorInterface
      */
     public function getCode()
     {
-        $files = array();
+        $files = [];
 
         foreach ($this->files as $file) {
             $files[$file] = file_get_contents($file);

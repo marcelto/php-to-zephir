@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Loops\ForeachStmt;
 
 class SimpleForeachTest extends \ConverterBaseTest

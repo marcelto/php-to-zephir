@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\StrongType\FunctionStmt;
 
 class MethodTypeUndefinedTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class MethodTypeUndefinedTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\StrongType\FunctionStmt;
 
 class MethodTypeUndefined

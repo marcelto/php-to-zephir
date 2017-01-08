@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer;
 
 use PhpParser\Node\Stmt;
@@ -22,11 +21,11 @@ class ModifiersPrinter extends SimplePrinter
      */
     public function convert($modifiers)
     {
-        return ($modifiers & Stmt\Class_::MODIFIER_PUBLIC    ? 'public '    : '')
-              .($modifiers & Stmt\Class_::MODIFIER_PROTECTED ? 'protected ' : '')
-              .($modifiers & Stmt\Class_::MODIFIER_PRIVATE   ? 'protected ' : '') // due to #issues/251
-              .($modifiers & Stmt\Class_::MODIFIER_STATIC    ? 'static '    : '')
-              .($modifiers & Stmt\Class_::MODIFIER_ABSTRACT  ? 'abstract '  : '')
-              .($modifiers & Stmt\Class_::MODIFIER_FINAL     ? 'final '     : '');
+        return ($modifiers & Stmt\Class_::MODIFIER_PUBLIC ? 'public ' : '')
+            . ($modifiers & Stmt\Class_::MODIFIER_PROTECTED ? 'protected ' : '')
+            . ($modifiers & Stmt\Class_::MODIFIER_PRIVATE ? 'protected ' : '') // due to #issues/251
+            . ($modifiers & Stmt\Class_::MODIFIER_STATIC ? 'static ' : '')
+            . ($modifiers & Stmt\Class_::MODIFIER_ABSTRACT ? 'abstract ' : '')
+            . ($modifiers & Stmt\Class_::MODIFIER_FINAL ? 'final ' : '');
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\ArrayManipulation\Left;
 
 class ArrayDimLetWithAssignScalarTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class ArrayDimLetWithAssignScalarTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Simple;
 
 class ArrayDimLetWithAssignScalarTest

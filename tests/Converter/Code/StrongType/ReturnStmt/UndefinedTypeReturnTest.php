@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\StrongType\ReturnStmt;
 
 class UndefinedTypeReturnTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class UndefinedTypeReturnTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\StrongType\ReturnStmt;
 
 class UndefinedTypeReturn

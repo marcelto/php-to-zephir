@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer;
 
 use PhpParser\Node;
@@ -23,7 +22,7 @@ class InfixOpPrinter extends SimplePrinter
         list($precedence, $associativity) = $this->dispatcher->getPrecedenceMap($type);
 
         return $this->dispatcher->pPrec($leftNode, $precedence, $associativity, -1)
-             .$operatorString
-             .$this->dispatcher->pPrec($rightNode, $precedence, $associativity, 1);
+            . $operatorString
+            . $this->dispatcher->pPrec($rightNode, $precedence, $associativity, 1);
     }
 }

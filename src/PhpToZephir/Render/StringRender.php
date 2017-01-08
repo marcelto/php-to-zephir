@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Render;
 
 class StringRender implements RenderInterface

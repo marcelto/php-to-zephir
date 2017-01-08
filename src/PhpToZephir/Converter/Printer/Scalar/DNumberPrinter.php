@@ -1,10 +1,4 @@
 <?php
-/**
- * Copyright (c) 2017.
- *
- *
- */
-
 namespace PhpToZephir\Converter\Printer\Scalar;
 
 use PhpParser\Node\Scalar;
@@ -27,9 +21,10 @@ class DNumberPrinter extends SimplePrinter
      */
     public function convert(Scalar\DNumber $node)
     {
-        if ($node->value== 0) {
+        if ($node->value == 0) {
             return '0.0';
         }
+
         return $node->value;
     }
 }

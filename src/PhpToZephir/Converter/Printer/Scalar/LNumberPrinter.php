@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Scalar;
 
 use PhpParser\Node\Scalar;

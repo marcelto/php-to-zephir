@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Concat;
 
 class ConcatWithCallFuncWithTmpVarTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class ConcatWithCallFuncWithTmpVarTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Concat;
 
 class ConcatAndCallFuncWithTmpVar

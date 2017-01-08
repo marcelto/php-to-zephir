@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\CodeCollector;
 
 class StringCodeCollector implements CodeCollectorInterface

@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Tests\Command\Convert;
 
 use PhpToZephir\EngineFactory;

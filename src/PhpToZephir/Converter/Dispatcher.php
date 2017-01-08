@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter;
 
 use PhpToZephir\Logger;
@@ -33,11 +32,11 @@ class Dispatcher
     /**
      * @var array
      */
-    private $precedenceMap = array();
+    private $precedenceMap = [];
     /**
      * @var array
      */
-    private $classes = array();
+    private $classes = [];
     /**
      * @var PrinterCollection
      */
@@ -85,11 +84,11 @@ class Dispatcher
             return;
         }
 
-        $this->logger->trace('p'.$node->getType(), $node, $this->getMetadata()->getFullQualifiedNameClass());
+        $this->logger->trace('p' . $node->getType(), $node, $this->getMetadata()->getFullQualifiedNameClass());
 
-        $class = $this->getClass('p'.$node->getType());
+        $class = $this->getClass('p' . $node->getType());
 
-        return call_user_func_array(array($class, "convert"), $args);
+        return call_user_func_array([$class, "convert"], $args);
     }
 
     /**
@@ -100,7 +99,7 @@ class Dispatcher
      */
     public function __call($method, $arguments)
     {
-        return call_user_func_array(array($this->getClass($method), 'convert'), $arguments);
+        return call_user_func_array([$this->getClass($method), 'convert'], $arguments);
     }
 
     /**
@@ -152,7 +151,7 @@ class Dispatcher
         if ($reflectionClass->getConstructor() === null) {
             return new $className();
         }
-        $dependencies = array();
+        $dependencies = [];
 
         foreach ($reflectionClass->getConstructor()->getParameters() as $nmb => $param) {
             $name = $param->getClass()->name;
@@ -204,7 +203,7 @@ class Dispatcher
         $this->classCollector = $classCollector;
         $this->logger = $logger;
 
-        return ltrim(str_replace("\n".self::noIndentToken, "\n", $this->pStmts($stmts, false)));
+        return ltrim(str_replace("\n" . self::noIndentToken, "\n", $this->pStmts($stmts, false)));
     }
 
     /**

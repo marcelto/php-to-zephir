@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpToZephir\Converter\Dispatcher;
@@ -58,7 +57,7 @@ class InterfacePrinter
 
         if (!empty($node->extends)) {
             $extendsStmt = ' extends ';
-            $extends = array();
+            $extends = [];
             foreach ($node->extends as $extend) {
                 $extends[] = $this->reservedWordReplacer->replace($extend);
             }
@@ -66,8 +65,8 @@ class InterfacePrinter
             $extendsStmt .= implode(', ', $extends);
         }
 
-        return 'interface '.$node->name
-             .$extendsStmt
-             ."\n".'{'.$this->dispatcher->pStmts($node->stmts)."\n".'}';
+        return 'interface ' . $node->name
+            . $extendsStmt
+            . "\n" . '{' . $this->dispatcher->pStmts($node->stmts) . "\n" . '}';
     }
 }

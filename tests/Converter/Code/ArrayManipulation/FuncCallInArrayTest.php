@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\ArrayManipulation;
 
 class FuncCallInArrayTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class FuncCallInArrayTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\ArrayManipulation;
 
 class FuncCallInArray
@@ -81,7 +79,7 @@ class FuncCallInArray
 EOT;
         $this->assertConvertToZephir($php, $zephir);
     }
-    
+
     public function testWithAssignInside()
     {
         $php = <<<'EOT'
@@ -121,7 +119,7 @@ class FuncCallInArray
 EOT;
         $this->assertConvertToZephir($php, $zephir);
     }
-    
+
     public function testWithAssignInsideInBoth()
     {
         $php = <<<'EOT'

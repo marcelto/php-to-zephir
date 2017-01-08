@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer;
 
 use PhpParser\Node;
@@ -33,10 +32,10 @@ class PrecPrinter extends SimplePrinter
             if ($childPrecedence > $parentPrecedence
                 || ($parentPrecedence == $childPrecedence && $parentAssociativity != $childPosition)
             ) {
-                return '('.$this->dispatcher->{'p'.$type}($node).')';
+                return '(' . $this->dispatcher->{'p' . $type}($node) . ')';
             }
         }
 
-        return $this->dispatcher->{'p'.$type}($node);
+        return $this->dispatcher->{'p' . $type}($node);
     }
 }

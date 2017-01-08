@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpToZephir\Converter\Dispatcher;
@@ -21,7 +20,7 @@ class FuncCallPrinter
      * @var AssignManipulator
      */
     private $assignManipulator = null;
-    
+
     /**
      * @param Dispatcher        $dispatcher
      * @param Logger            $logger
@@ -33,6 +32,7 @@ class FuncCallPrinter
         $this->logger = $logger;
         $this->assignManipulator = $assignManipulator;
     }
+
     /**
      * @return string
      */
@@ -52,11 +52,11 @@ class FuncCallPrinter
         $node->args = $this->assignManipulator->transformAssignInConditionTest($node->args);
 
         if ($node->name instanceof Expr\Variable) {
-            $instanciation = '{'.$this->dispatcher->p($node->name).'}';
+            $instanciation = '{' . $this->dispatcher->p($node->name) . '}';
         } else {
             $instanciation = $this->dispatcher->p($node->name);
         }
 
-        return $collected->getCollected() . $instanciation . '('.$this->dispatcher->pCommaSeparated($node->args).')';
+        return $collected->getCollected() . $instanciation . '(' . $this->dispatcher->pCommaSeparated($node->args) . ')';
     }
 }

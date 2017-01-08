@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -34,6 +33,7 @@ class PropertyPrinter
         $this->logger = $logger;
         $this->reservedWordReplacer = $reservedWordReplacer;
     }
+
     /**
      * @return string
      */
@@ -54,6 +54,6 @@ class PropertyPrinter
             $node->props[$key] = $prop;
         }
 
-        return $this->dispatcher->pModifiers($node->type).$this->dispatcher->pCommaSeparated($node->props).';';
+        return $this->dispatcher->pModifiers($node->type) . $this->dispatcher->pCommaSeparated($node->props) . ';';
     }
 }

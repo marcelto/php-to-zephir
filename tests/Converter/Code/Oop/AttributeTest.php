@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Oop;
 
 class AttributeTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class AttributeTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Oop;
 
 class Attribute

@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr\Cast;
 
 use PhpParser\Node\Expr;

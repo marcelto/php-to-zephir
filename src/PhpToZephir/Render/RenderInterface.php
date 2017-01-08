@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Render;
 
 interface RenderInterface

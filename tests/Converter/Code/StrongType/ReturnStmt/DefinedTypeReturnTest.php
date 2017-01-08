@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\StrongType\ReturnStmt;
 
 class DefinedTypeReturnTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class DefinedTypeReturnTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\StrongType\ReturnStmt;
 
 class DefinedTypeReturn
@@ -139,7 +137,6 @@ EOT
 ,
 <<<'EOT'
 <?php
-
 namespace Code\StrongType\ReturnStmt;
 
 class MyClass
@@ -187,7 +184,6 @@ EOT
     {
         $php = array(<<<'EOT'
 <?php
-
 namespace Code\StrongType\ReturnStmt;
 
 class DefinedTypeReturn
@@ -212,7 +208,6 @@ EOT
             ,
             <<<'EOT'
 <?php
-
 namespace Code\StrongType\ReturnStmt\Up;
 
 class MyClass
@@ -287,7 +282,6 @@ EOT
             ,
             <<<'EOT'
 <?php
-
 namespace Code\StrongType\ReturnStmt\Up;
 
 class MyClass
@@ -337,7 +331,6 @@ EOT
     {
         $php = array(<<<'EOT'
 <?php
-
 namespace Code\StrongType\ReturnStmt;
 
 class DefinedTypeReturn
@@ -362,7 +355,6 @@ EOT
             ,
             <<<'EOT'
 <?php
-
 namespace Code\StrongType\ReturnStmt;
 
 class MyClass

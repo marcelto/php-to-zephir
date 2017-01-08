@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Method;
 
 class ListTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class ListTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Method;
 
 class TestList

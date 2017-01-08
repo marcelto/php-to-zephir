@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -22,6 +21,6 @@ class ClassConstFetchPrinter extends SimplePrinter
      */
     public function convert(Expr\ClassConstFetch $node)
     {
-        return $this->dispatcher->p($node->class).'::'.$node->name;
+        return $this->dispatcher->p($node->class) . '::' . $node->name;
     }
 }

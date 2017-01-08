@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter;
 
 class ClassMetadata
@@ -15,19 +14,19 @@ class ClassMetadata
     /**
      * @var array
      */
-    private $use = array();
+    private $use = [];
     /**
      * @var array
      */
-    private $classes = array();
+    private $classes = [];
     /**
      * @var array
      */
-    private $classesAlias = array();
+    private $classesAlias = [];
     /**
      * @var array
      */
-    private $implements = array();
+    private $implements = [];
 
     /**
      * @param string $value
@@ -36,6 +35,7 @@ class ClassMetadata
     {
         $this->namespace = $value;
     }
+
     /**
      * @param string $value
      */
@@ -43,6 +43,7 @@ class ClassMetadata
     {
         $this->class = $value;
     }
+
     /**
      * @param string $value
      */
@@ -58,6 +59,7 @@ class ClassMetadata
     {
         $this->use[] = $value;
     }
+
     /**
      * @param string $value
      */
@@ -81,6 +83,7 @@ class ClassMetadata
     {
         return $this->namespace;
     }
+
     /**
      * @return string
      */
@@ -88,6 +91,7 @@ class ClassMetadata
     {
         return $this->class;
     }
+
     /**
      * @return array
      */
@@ -95,6 +99,7 @@ class ClassMetadata
     {
         return $this->implements;
     }
+
     /**
      * @return array
      */
@@ -102,6 +107,7 @@ class ClassMetadata
     {
         return $this->classes;
     }
+
     /**
      * @return array
      */
@@ -109,6 +115,7 @@ class ClassMetadata
     {
         return $this->use;
     }
+
     /**
      * @return string
      */
@@ -116,11 +123,12 @@ class ClassMetadata
     {
         return $this->classesAlias;
     }
+
     /**
      * @return string
      */
     public function getFullQualifiedNameClass()
     {
-        return $this->namespace.'\\'.$this->class;
+        return $this->namespace . '\\' . $this->class;
     }
 }

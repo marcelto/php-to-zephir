@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -22,7 +21,7 @@ class CasePrinter extends SimplePrinter
      */
     public function convert(Stmt\Case_ $node)
     {
-        return (null !== $node->cond ? 'case '.$this->dispatcher->p($node->cond) : 'default').':'
-             .$this->dispatcher->pStmts($node->stmts);
+        return (null !== $node->cond ? 'case ' . $this->dispatcher->p($node->cond) : 'default') . ':'
+            . $this->dispatcher->pStmts($node->stmts);
     }
 }

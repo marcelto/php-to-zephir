@@ -1,10 +1,4 @@
 <?php
-/**
- * Copyright (c) 2017.
- *
- *
- */
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -28,11 +22,11 @@ class CatchPrinter extends SimplePrinter
     public function convert(Stmt\Catch_ $node)
     {
         $exceptions = [];
-        foreach($node->types as $type) {
+        foreach ($node->types as $type) {
             $exceptions[] = $this->dispatcher->p($type);
         }
 
-        return ' catch '.implode('|',$exceptions).', '.$node->var.' {'
-             .$this->dispatcher->pStmts($node->stmts)."\n".'}';
+        return ' catch ' . implode('|', $exceptions) . ', ' . $node->var . ' {'
+            . $this->dispatcher->pStmts($node->stmts) . "\n" . '}';
     }
 }

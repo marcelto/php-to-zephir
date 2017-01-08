@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpToZephir\Converter\Dispatcher;
@@ -52,8 +51,8 @@ class MethodCallPrinter
         $collected = $this->assignManipulator->collectAssignInCondition($node->args);
         $node->args = $this->assignManipulator->transformAssignInConditionTest($node->args);
 
-        return $collected->getCollected() . 
-                $this->dispatcher->pVarOrNewExpr($node->var).'->'.$this->dispatcher->pObjectProperty($node->name)
-             .'('.$this->dispatcher->pCommaSeparated($node->args).')';
+        return $collected->getCollected() .
+            $this->dispatcher->pVarOrNewExpr($node->var) . '->' . $this->dispatcher->pObjectProperty($node->name)
+            . '(' . $this->dispatcher->pCommaSeparated($node->args) . ')';
     }
 }

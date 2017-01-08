@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -14,6 +13,6 @@ class IssetPrinter extends SimplePrinter
 
     public function convert(Expr\Isset_ $node)
     {
-        return 'isset '.$this->dispatcher->pCommaSeparated($node->vars).'';
+        return 'isset ' . $this->dispatcher->pCommaSeparated($node->vars) . '';
     }
 }

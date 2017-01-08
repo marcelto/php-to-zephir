@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -14,6 +13,6 @@ class ExitPrinter extends SimplePrinter
 
     public function convert(Expr\Exit_ $node)
     {
-        return 'die'.(null !== $node->expr ? '('.$this->dispatcher->p($node->expr).')' : '');
+        return 'die' . (null !== $node->expr ? '(' . $this->dispatcher->p($node->expr) . ')' : '');
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer;
 
 use PhpParser\Node\Expr;
@@ -42,7 +41,7 @@ class ObjectPropertyPrinter
     public function convert($node)
     {
         if ($node instanceof Expr) {
-            return '{'.$this->dispatcher->p($node).'}';
+            return '{' . $this->dispatcher->p($node) . '}';
         } else {
             return $this->reservedWordReplacer->replace($node);
         }

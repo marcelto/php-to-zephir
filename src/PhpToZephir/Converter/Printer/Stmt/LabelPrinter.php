@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -22,6 +21,6 @@ class LabelPrinter extends SimplePrinter
      */
     public function convert(Stmt\Label $node)
     {
-        return $node->name.':';
+        return $node->name . ':';
     }
 }

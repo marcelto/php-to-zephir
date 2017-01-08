@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Simple;
 
 class StringConcatTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class StringConcatTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Simple;
 
 class StringConcat

@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Scalar;
 
 use PhpParser\Node\Scalar;
@@ -22,6 +21,6 @@ class EncapsedPrinter extends SimplePrinter
      */
     public function convert(Scalar\Encapsed $node)
     {
-        return '"'.$this->dispatcher->pEncapsList($node->parts, '"').'"';
+        return '"' . $this->dispatcher->pEncapsList($node->parts, '"') . '"';
     }
 }

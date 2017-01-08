@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer;
 
 use PhpParser\Node;
@@ -31,6 +30,6 @@ class ArgPrinter extends SimplePrinter
             );
         }
 
-        return ($node->unpack ? '...' : '').$this->dispatcher->p($node->value);
+        return ($node->unpack ? '...' : '') . $this->dispatcher->p($node->value);
     }
 }

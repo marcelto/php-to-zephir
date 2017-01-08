@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Scalar;
 
 use PhpToZephir\Converter\Dispatcher;
@@ -24,7 +23,7 @@ class StringPrinter extends SimplePrinter
      */
     public function convert(Scalar\String_ $node)
     {
-        return '"'.$this->pNoIndent(addcslashes($node->value, '\"\\')).'"';
+        return '"' . $this->pNoIndent(addcslashes($node->value, '\"\\')) . '"';
     }
 
     /**
@@ -36,6 +35,6 @@ class StringPrinter extends SimplePrinter
      */
     private function pNoIndent($string)
     {
-        return str_replace("\n", "\n".Dispatcher::noIndentToken, $string);
+        return str_replace("\n", "\n" . Dispatcher::noIndentToken, $string);
     }
 }

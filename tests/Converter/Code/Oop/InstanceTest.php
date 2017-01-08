@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Oop;
 
 class InstanceTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class InstanceTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Oop;
 
 class Instance

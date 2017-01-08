@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -14,6 +13,6 @@ class PostIncPrinter extends SimplePrinter
 
     public function convert(Expr\PostInc $node, $autolet = true)
     {
-        return ($autolet === true ? 'let ' : '').$this->dispatcher->pPostfixOp('Expr_PostInc', $node->var, '++');
+        return ($autolet === true ? 'let ' : '') . $this->dispatcher->pPostfixOp('Expr_PostInc', $node->var, '++');
     }
 }

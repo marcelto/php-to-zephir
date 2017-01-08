@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -14,6 +13,6 @@ class PreDecPrinter extends SimplePrinter
 
     public function convert(Expr\PreDec $node)
     {
-        return 'let '.$this->dispatcher->pPostfixOp('Expr_PreDec', $node->var, '--');
+        return 'let ' . $this->dispatcher->pPostfixOp('Expr_PreDec', $node->var, '--');
     }
 }

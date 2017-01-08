@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\StrongType\FunctionStmt;
 
 class MethodTypeWithScalarTypeTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class MethodTypeWithScalarTypeTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\StrongType\FunctionStmt;
 
 class MethodTypeWithScalarType
@@ -65,7 +63,6 @@ EOT
 ,
     <<<'EOT'
 <?php
-
 namespace Code\StrongType\FunctionStmt;
 
 interface MethodTypeWithScalarTypeInterface

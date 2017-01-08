@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter;
 
 use PhpParser\Node\Stmt;
@@ -71,15 +70,15 @@ class ClassInformation
                 $classMetadata->setNamespace(implode('\\', $node->name->parts));
             } elseif ($node instanceof Stmt\Interface_ || $node instanceof Stmt\Class_) {
                 if ($class !== null) {
-                    throw new \Exception('Multiple class find in '.$fileName);
+                    throw new \Exception('Multiple class find in ' . $fileName);
                 }
                 $class = $this->reservedWordReplacer->replace($node->name);
                 $classMetadata->setClass($class);
 
-                if ($node instanceof Stmt\Interface_ ) {
-                	
+                if ($node instanceof Stmt\Interface_) {
+
                 } elseif ($node instanceof Stmt\Class_ && $node->implements !== null) {
-                    $implementsClean = array();
+                    $implementsClean = [];
                     foreach ($node->implements as $implement) {
                         $implementsClean[] = $this->reservedWordReplacer->replace(implode('\\', $implement->parts));
                     }
@@ -87,7 +86,7 @@ class ClassInformation
                 }
             } elseif ($node instanceof Stmt\Interface_ || $node instanceof Stmt\Class_) {
                 if ($class !== null) {
-                    throw new \Exception('Multiple class find in '.$fileName);
+                    throw new \Exception('Multiple class find in ' . $fileName);
                 }
                 $class = $this->reservedWordReplacer->replace($node->name);
                 $classMetadata->setClass($class);

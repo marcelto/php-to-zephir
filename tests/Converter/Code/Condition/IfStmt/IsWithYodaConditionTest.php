@@ -1,5 +1,4 @@
 <?php
-
 namespace Converter\Code\Condition\IfStmt;
 
 class IsWithYodaConditionTest extends \ConverterBaseTest
@@ -8,7 +7,6 @@ class IsWithYodaConditionTest extends \ConverterBaseTest
     {
         $php = <<<'EOT'
 <?php
-
 namespace Code\Condition\IfStmt;
 
 class IsWithYodaCondition

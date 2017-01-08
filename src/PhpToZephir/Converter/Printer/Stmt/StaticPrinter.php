@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Stmt;
 
 use PhpParser\Node\Stmt;
@@ -15,7 +14,7 @@ class StaticPrinter extends SimplePrinter
 
     public function convert(Stmt\Static_ $node)
     {
-        $vars = array();
+        $vars = [];
 
         foreach ($node->vars as $var) {
             $this->logger->logIncompatibility(

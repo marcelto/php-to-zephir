@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpToZephir\Converter\Printer\Expr;
 
 use PhpParser\Node\Expr;
@@ -14,6 +13,6 @@ class ShellExecPrinter extends SimplePrinter
 
     public function convert(Expr\ShellExec $node)
     {
-        return '`'.$this->dispatcher->pEncapsList($node->parts, '`').'`';
+        return '`' . $this->dispatcher->pEncapsList($node->parts, '`') . '`';
     }
 }
