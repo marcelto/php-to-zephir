@@ -27,12 +27,12 @@ class CatchPrinter extends SimplePrinter
      */
     public function convert(Stmt\Catch_ $node)
     {
-        if (!isset($node->type)) {
-            $type = $node->types[0];
-        } else {
-            $type = $node->type;
+        $exceptions = [];
+        foreach($node->types as $type) {
+            $exceptions[] = $this->dispatcher->p($type);
         }
-        return ' catch '.$this->dispatcher->p($type).', '.$node->var.' {'
+
+        return ' catch '.implode('|',$exceptions).', '.$node->var.' {'
              .$this->dispatcher->pStmts($node->stmts)."\n".'}';
     }
 }
