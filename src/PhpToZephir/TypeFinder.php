@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright (c) 2017.
+ *
+ *
+ */
 
 namespace PhpToZephir;
 
@@ -10,6 +15,7 @@ use phpDocumentor\Reflection\DocBlock\Tag\ParamTag;
 use phpDocumentor\Reflection\DocBlock\Tag\ReturnTag;
 use phpDocumentor\Reflection\DocBlock\Tag\ThrowsTag;
 use phpDocumentor\Reflection\DocBlock\Tag\SeeTag;
+use PhpParser\NodeAbstract;
 use PhpToZephir\Converter\ClassMetadata;
 use PhpParser\Node;
 
@@ -47,11 +53,11 @@ class TypeFinder
     }
 
     /**
-     * @param ClassMethod   $node
+     * @param NodeAbstract   $node
      * @param ClassMetadata $classMetadata
-     * @retur narray
+     * @return array
      */
-    public function getTypes(ClassMethod $node, ClassMetadata $classMetadata)
+    public function getTypes(NodeAbstract $node, ClassMetadata $classMetadata)
     {
         $definition = array();
 
@@ -63,7 +69,7 @@ class TypeFinder
     }
 
     /**
-     * @param ClassMethod $node
+     * @param NodeAbstract $node
      * @param string      $actualNamespace
      * @param array       $use
      * @param array       $classes
@@ -71,7 +77,7 @@ class TypeFinder
      *
      * @return array
      */
-    private function parseParam(ClassMethod $node, ClassMetadata $classMetadata, array $definition)
+    private function parseParam(NodeAbstract $node, ClassMetadata $classMetadata, array $definition)
     {
         if (isset($definition['params']) === false) {
             $definition['params'] = array();
@@ -113,11 +119,11 @@ class TypeFinder
     }
 
     /**
-     * @param ClassMethod $node
+     * @param NodeAbstract $node
      *
      * @return NULL|\phpDocumentor\Reflection\DocBlock
      */
-    private function nodeToDocBlock(ClassMethod $node)
+    private function nodeToDocBlock(NodeAbstract $node)
     {
         $attribute = $node->getAttributes();
 
@@ -163,7 +169,7 @@ class TypeFinder
      *
      * @return array
      */
-    private function findReturnTag($phpdoc = null, array $definition, ClassMetadata $classMetadata, ClassMethod $node)
+    private function findReturnTag($phpdoc = null, array $definition, ClassMetadata $classMetadata, NodeAbstract $node)
     {
         $implements = $classMetadata->getImplements();
         if (is_array($implements) === true) {
