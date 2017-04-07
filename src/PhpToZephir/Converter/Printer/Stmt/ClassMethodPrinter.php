@@ -160,7 +160,14 @@ class ClassMethodPrinter
     private function printReturn(Stmt\ClassMethod $node, array $types)
     {
         $stmt = '';
-        if (array_key_exists('return', $types) === false && $this->hasReturnStatement($node) === false) {
+        if ($GLOBALS['printClass']) {
+            $a = 1;
+           // print_r($node);
+           // print_r($types);
+        }
+        if (!empty($node->getReturnType()) && is_string($node->getReturnType())) {
+            $stmt .= ' -> ' . $node->getReturnType();
+        } elseif (array_key_exists('return', $types) === false && $this->hasReturnStatement($node) === false) {
             $stmt .= ' -> void';
         } elseif (array_key_exists('return', $types) === true && empty($types['return']['type']['value']) === false) {
             $stmt .= ' -> ' . $this->printType($types['return']);
@@ -178,6 +185,9 @@ class ClassMethodPrinter
     {
         foreach ($this->nodeFetcher->foreachNodes($nodes) as $nodeData) {
             $node = $nodeData['node'];
+            if ($GLOBALS['printClass']) {
+             //   echo get_class($node) . PHP_EOL;
+            }
             if ($node instanceof Stmt\Return_) {
                 return true;
             }
