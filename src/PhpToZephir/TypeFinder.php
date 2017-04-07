@@ -98,7 +98,7 @@ class TypeFinder
                     $params['type'] = $this->foundTypeInCommentForVar($docBlock, $param, $classMetadata);
                 }
             } elseif ($param->type instanceof \PhpParser\Node\Name) {
-                $className = implode('\\', $param->type->parts);
+                $className = ($param->type->firstSlash ? '\\':'') . implode('\\', $param->type->parts);
                 $params['type']['value'] = $className;
                 $params['type']['isClass'] = true;
             }
