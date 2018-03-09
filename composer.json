@@ -16,7 +16,7 @@
   ],
   "homepage": "https://github.com/fezfez/php-to-zephir",
   "require": {
-    "nikic/PHP-Parser": "3.0.*",
+    "nikic/PHP-Parser": "3.*",
     "phpdocumentor/reflection-docblock": "3.1.*",
     "phalcon/zephir": "0.9.*",
     "symfony/console": "3.1.*"
