@@ -1,6 +1,7 @@
 <?php
 namespace PhpToZephir\Converter\Printer;
 
+use PhpParser\Node\Expr\Variable;
 use PhpToZephir\Converter\SimplePrinter;
 
 class EncapsListPrinter extends SimplePrinter
@@ -14,11 +15,15 @@ class EncapsListPrinter extends SimplePrinter
     {
         $return = '';
         foreach ($encapsList as $element) {
-            if (is_string($element)) {
-                $return .= addcslashes($element, "\n\r\t\f\v$" . $quote . '\\');
-            } else {
-                $return .= '{' . $this->dispatcher->p($element) . '}';
-            }
+
+	        if ($element instanceof Variable)
+	        {
+		        $return .= '{' . $this->dispatcher->p($element) . '}';
+	        }
+	        else // string part
+	        {
+		        $return .= addcslashes($element->value, "\n\r\t\f\v$".$quote.'\\');;
+	        }
         }
 
         return $return;
