@@ -19,7 +19,7 @@
     "nikic/PHP-Parser": "3.*",
     "phpdocumentor/reflection-docblock": "3.1.*",
     "phalcon/zephir": "0.9.*",
-    "symfony/console": "~3.*"
+    "symfony/console": "~3.1"
   },
   "require-dev": {
     "phpunit/phpunit": "4.8.*"
